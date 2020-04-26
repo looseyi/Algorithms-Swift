@@ -117,11 +117,6 @@ extension Solution {
 //    ​    ​    
 //    N) ： 在特例情况下（例如 [1, 1, 1, 1][1,1,1,1]），会退化到 O(N)O(N)。
 //    空间复杂度 O(1)O(1) ： ii , jj , mm 指针使用常数大小的额外空间。
-//    
-//    作者：jyd
-//    链接：https://leetcode-cn.com/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/solution/mian-shi-ti-11-xuan-zhuan-shu-zu-de-zui-xiao-shu-3/
-//    来源：力扣（LeetCode）
-//    著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 	
 	/**
 	旋转数组的最小数字

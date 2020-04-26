@@ -43,7 +43,7 @@ extension Solution {
 		/// 将 inorder 数组分为 [0, p-1] 和 [p+1, inorder.inRight] 两部分, 分别对应左子树的节点集合和右子树的节点集合。
 		/// 注意 leftTreeElementCount 因为在先序数组中，左子树的节点全部在右子树的前面。
 
-		let root = BinaryTreeNode(value: preorder[preLeft])
+		let root = BinaryTreeNode(val: preorder[preLeft])
 		let leftTreeElementCount = i - inLeft
 		if preLeft + 1 <= preLeft + leftTreeElementCount {
 			root.left = buildTreeCore(preorder, preLeft + 1, preLeft + leftTreeElementCount,
@@ -80,7 +80,7 @@ extension Solution {
 //				break
 //			}
 //		}//		
-//		let root = BinaryTreeNode(value: preorder[pos])
+//		let root = BinaryTreeNode(val: preorder[pos])
 //		if inLeft <= i - 1 {
 //			pos += 1
 //			root.left = buildTreeCore(preorder, &pos, inorder, inLeft, i - 1)

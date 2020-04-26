@@ -12,10 +12,10 @@ public class BinaryTreeNode: Equatable {
 	public var parent: BinaryTreeNode?
 	public var left: BinaryTreeNode?
 	public var right: BinaryTreeNode?
-	public var value: Int
+	public var val: Int
 
-	public init(value: Int, parent: BinaryTreeNode? = nil, left: BinaryTreeNode? = nil, right: BinaryTreeNode? = nil) {
-		self.value = value
+	public init(val: Int, parent: BinaryTreeNode? = nil, left: BinaryTreeNode? = nil, right: BinaryTreeNode? = nil) {
+		self.val = val
 		self.left = left
 		self.right = right
 		self.parent = parent
@@ -31,7 +31,7 @@ public class BinaryTreeNode: Equatable {
 		guard let node = node else {
 			return
 		}
-		result.append(node.value)
+		result.append(node.val)
 		preOrderCore(node.left, result: &result)
 		preOrderCore(node.right, result: &result)
 	}
@@ -47,11 +47,11 @@ public class BinaryTreeNode: Equatable {
 			return
 		}
 		inOrderCore(node.left, result: &result)
-		result.append(node.value)
+		result.append(node.val)
 		inOrderCore(node.right, result: &result)
 	}
 	
 	public static func ==(left: BinaryTreeNode, right: BinaryTreeNode) -> Bool {
-		return left.value == right.value
+		return left.val == right.val
 	}
 }
