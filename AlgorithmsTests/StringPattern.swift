@@ -61,3 +61,36 @@ final class stringMatchPatternDP: XCTestCase {
         XCTAssertFalse(solution.stringMatchPatternDP("bcbbabab", ".*a*a"))
     }
 }
+
+
+
+class NumericStrings: XCTestCase {
+    var solution: Solution!
+
+    override func setUp() {
+        super.setUp()
+        solution = Solution()
+    }
+
+    func testCase1(){
+        XCTAssertEqual(solution.isNumeric(str: "100"), true)
+        XCTAssertEqual(solution.isNumeric(str: "123.45e+6"), true)
+        XCTAssertEqual(solution.isNumeric(str: "+500"), true)
+        XCTAssertEqual(solution.isNumeric(str: "5e2"), true)
+        XCTAssertEqual(solution.isNumeric(str: "3.1416"), true)
+        XCTAssertEqual(solution.isNumeric(str: "600."), true)
+        XCTAssertEqual(solution.isNumeric(str: "-.123"), true)
+        XCTAssertEqual(solution.isNumeric(str: "-1E-16"), true)
+        XCTAssertEqual(solution.isNumeric(str: "1.79769313486232E+308"), true)
+        XCTAssertEqual(solution.isNumeric(str: "12e"), false)
+        XCTAssertEqual(solution.isNumeric(str: "1a3.14"), false)
+        XCTAssertEqual(solution.isNumeric(str: "1+23"), false)
+        XCTAssertEqual(solution.isNumeric(str: "1.2.3"), false)
+        XCTAssertEqual(solution.isNumeric(str: "+-5"), false)
+        XCTAssertEqual(solution.isNumeric(str: "12e+5.4"), false)
+        XCTAssertEqual(solution.isNumeric(str: "."), false)
+        XCTAssertEqual(solution.isNumeric(str: ".e1"), false)
+        XCTAssertEqual(solution.isNumeric(str: "+."), false)
+        XCTAssertEqual(solution.isNumeric(str: ""), false)
+    }
+}

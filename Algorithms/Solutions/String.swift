@@ -75,3 +75,65 @@ extension Solution {
     }
 }
 
+
+extension Solution {
+
+//    剑指Offer 面试题20：表示数值的字符串  https://leetcode-cn.com/problems/biao-shi-shu-zhi-de-zi-fu-chuan-lcof/
+//    题目：请实现一个函数用来判断字符串是否表示数值（包括整数和小数）。例如，
+//    字符串“+100”、“5e2”、“-123”、“3.1416”及“-1E-16”都表示数值，但“12e”、
+//    “1a3.14”、“1.2.3”、“+-5”及“12e+5.4”都不是
+    /*
+     核心: 有效数字的模式只有两种:
+     1)A[.[B]][e|EC]  比如: +100   -67.0  29.    3.14E5
+     2).B[e|EC]       比如: .3     .4E6
+     其中,A、C是整数，B是正整数; [e|EC]表示[eC]或者[EC]
+     原则: 有A的话,有没有B都可以; 没有A的话, 必须有B
+     */
+
+    private static let digits: [Character] = ["0","1","2","3","4","5","6","7","8","9"]
+
+    public func isNumeric(str: String) -> Bool {
+        var s = s.trimmingCharacters(in: .whitespaces)
+        if s.isEmpty { return false }
+        let str = Array(s)
+
+        //查找正负号以及整数部分
+        var (isNum, index) = scanInteger(str, 0)
+        //如果之后是小数点
+        if index < str.count && str[index] == "." {
+            index += 1
+            //查找小数点之后的数字部分
+            let result = scanUnsignInteger(str, index)
+            isNum = isNum || result.0
+            index = result.1
+        }
+        //如果之后是e或者E
+        if index < str.count - 1 && (str[index] == "e" || str[index] == "E") {
+            index += 1
+            let result = scanInteger(str, index)
+            isNum = isNum && result.0
+            index = result.1
+        }
+        return isNum && index == str.count
+    }
+
+    /// 匹配数值字符串中整数部分（可能包含+和-符号）
+    private func scanInteger(_ str: [Character], _ startIdx: Int) -> (Bool, Int) {
+        var i = startIdx
+        if str[i] == "+" || str[i] == "-" {
+            i += 1
+        }
+        return scanUnsignInteger(str, i)
+    }
+
+    /// 匹配数值字符串中无符号整数部分, A[.[B]][e|EC] 即：其中的A（移除正负符号后）和B
+    private func scanUnsignInteger(_ str: [Character], _ startIdx: Int) -> (Bool, Int) {
+        var i = startIdx
+        while i < str.count, Solution.digits.contains(str[i]) {
+            i += 1
+        }
+        return (i > startIdx, i)
+    }
+}
+
+
