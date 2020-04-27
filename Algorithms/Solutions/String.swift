@@ -92,8 +92,8 @@ extension Solution {
 
     private static let digits: [Character] = ["0","1","2","3","4","5","6","7","8","9"]
 
-    public func isNumeric(str: String) -> Bool {
-        var s = s.trimmingCharacters(in: .whitespaces)
+    public func isNumeric(_ s: String) -> Bool {
+        let s = s.trimmingCharacters(in: .whitespaces)
         if s.isEmpty { return false }
         let str = Array(s)
 

@@ -15,7 +15,7 @@
 		8581283B2441CDB400C130BD /* BinaryTreeSolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858128332441CDB400C130BD /* BinaryTreeSolution.swift */; };
 		8581283D2441CDB400C130BD /* LinkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858128362441CDB400C130BD /* LinkList.swift */; };
 		8581283E2441CDB400C130BD /* BinaryTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858128372441CDB400C130BD /* BinaryTree.swift */; };
-		858128432441CE6900C130BD /* DuplicationInArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858128422441CE6900C130BD /* DuplicationInArray.swift */; };
+		858128432441CE6900C130BD /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858128422441CE6900C130BD /* Array.swift */; };
 		858128462441D3A000C130BD /* MatrixSolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858128452441D3A000C130BD /* MatrixSolution.swift */; };
 		8581284C2444308300C130BD /* BinaryTreeNextNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8581284B2444308300C130BD /* BinaryTreeNextNode.swift */; };
 		85812906244497E700C130BD /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85812905244497E700C130BD /* Queue.swift */; };
@@ -23,7 +23,6 @@
 		8581290A24449CDC00C130BD /* Fibonacci.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8581290924449CDC00C130BD /* Fibonacci.swift */; };
 		8581290C24449E3600C130BD /* Fibonacci.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8581290B24449E3600C130BD /* Fibonacci.swift */; };
 		859D0F062446090800C460DC /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859D0F052446090800C460DC /* Array.swift */; };
-		859D0F0824460BFE00C460DC /* MinNumberInRotatedArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859D0F0724460BFE00C460DC /* MinNumberInRotatedArray.swift */; };
 		85E610F3244E81B100295703 /* Cutting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E610F2244E81B100295703 /* Cutting.swift */; };
 		85E610F5244E824A00295703 /* Cutting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E610F4244E824A00295703 /* Cutting.swift */; };
 		85FC0B40245086C0003D9733 /* BinarySolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FC0B3F245086C0003D9733 /* BinarySolution.swift */; };
@@ -57,7 +56,7 @@
 		858128362441CDB400C130BD /* LinkList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkList.swift; sourceTree = "<group>"; };
 		858128372441CDB400C130BD /* BinaryTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryTree.swift; sourceTree = "<group>"; };
 		858128382441CDB400C130BD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		858128422441CE6900C130BD /* DuplicationInArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicationInArray.swift; sourceTree = "<group>"; };
+		858128422441CE6900C130BD /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		858128452441D3A000C130BD /* MatrixSolution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatrixSolution.swift; sourceTree = "<group>"; };
 		8581284B2444308300C130BD /* BinaryTreeNextNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryTreeNextNode.swift; sourceTree = "<group>"; };
 		85812905244497E700C130BD /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
@@ -65,7 +64,6 @@
 		8581290924449CDC00C130BD /* Fibonacci.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fibonacci.swift; sourceTree = "<group>"; };
 		8581290B24449E3600C130BD /* Fibonacci.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fibonacci.swift; sourceTree = "<group>"; };
 		859D0F052446090800C460DC /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
-		859D0F0724460BFE00C460DC /* MinNumberInRotatedArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinNumberInRotatedArray.swift; sourceTree = "<group>"; };
 		85E610F2244E81B100295703 /* Cutting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cutting.swift; sourceTree = "<group>"; };
 		85E610F4244E824A00295703 /* Cutting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cutting.swift; sourceTree = "<group>"; };
 		85FC0B3F245086C0003D9733 /* BinarySolution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinarySolution.swift; sourceTree = "<group>"; };
@@ -121,8 +119,7 @@
 				858128232441B62400C130BD /* BuildBinaryTree.swift */,
 				8581284B2444308300C130BD /* BinaryTreeNextNode.swift */,
 				8581282D2441C5A800C130BD /* LinkList.swift */,
-				858128422441CE6900C130BD /* DuplicationInArray.swift */,
-				859D0F0724460BFE00C460DC /* MinNumberInRotatedArray.swift */,
+				858128422441CE6900C130BD /* Array.swift */,
 				8581290724449BC000C130BD /* Queue.swift */,
 				8581290B24449E3600C130BD /* Fibonacci.swift */,
 				85E610F4244E824A00295703 /* Cutting.swift */,
@@ -303,11 +300,10 @@
 				85FC0B4624509521003D9733 /* Arthmetic.swift in Sources */,
 				85FCD2CB2453E43200E28DFE /* StringPattern.swift in Sources */,
 				8581290C24449E3600C130BD /* Fibonacci.swift in Sources */,
-				858128432441CE6900C130BD /* DuplicationInArray.swift in Sources */,
+				858128432441CE6900C130BD /* Array.swift in Sources */,
 				852897662448B3A3004EE1E5 /* Matrix.swift in Sources */,
 				858128242441B62400C130BD /* BuildBinaryTree.swift in Sources */,
 				85E610F5244E824A00295703 /* Cutting.swift in Sources */,
-				859D0F0824460BFE00C460DC /* MinNumberInRotatedArray.swift in Sources */,
 				85FC0B4224508954003D9733 /* Binary.swift in Sources */,
 				8581282E2441C5A800C130BD /* LinkList.swift in Sources */,
 			);

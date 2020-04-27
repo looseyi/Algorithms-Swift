@@ -163,3 +163,35 @@ extension Solution {
         return numbers[i]
     }
 }
+
+
+extension Solution {
+// 剑指Offer 面试题21：调整数组顺序使奇数位于偶数前面
+// 题目：输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有
+// 奇数位于数组的前半部分，所有偶数位于数组的后半部分。
+//    输入：nums = [1,2,3,4]
+//    输出：[1,3,2,4]
+//    注：[3,1,2,4] 也是正确的答案之一。
+
+//    对于数组交换的可以尝试使用双指针来解题
+
+    public func arrayExchangeSingal(_ nums: [Int]) -> [Int] {
+        var left = 0, right = nums.count - 1, nums = nums
+        while left < right {
+            // 左边为偶数，右边为基数则进行交换
+            if nums[left] % 2 == 0 && nums[right] % 2 == 1 {
+                let temp = nums[left]
+                nums[left] = nums[right]
+                nums[right] = temp
+                left += 1
+                right -= 1
+            } else if nums[left] % 2 == 1 {
+                left += 1
+            } else if nums[right] % 2 == 0 {
+                right -= 1
+            }
+        }
+        return nums
+    }
+}
+
