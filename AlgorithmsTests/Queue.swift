@@ -13,7 +13,7 @@ class TwoStackQueueTest: XCTestCase {
 
 	var queue: TwoStackQueue<Int>!
 	
-	override func setUp(){
+	override func setUp() {
 		super.setUp()
 		queue = TwoStackQueue<Int>()
 	}

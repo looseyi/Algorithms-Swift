@@ -17,7 +17,7 @@ final class stringMatchPatternDP: XCTestCase {
         super.setUp()
         solution = Solution()
     }
-    func testCase1(){
+    func testCase1() {
         XCTAssertTrue(solution.stringMatchPatternDP("", ""))
         XCTAssertFalse(solution.stringMatchPatternDP("", "."))
         XCTAssertTrue(solution.stringMatchPatternDP("", ".*"))
@@ -72,7 +72,7 @@ class NumericStrings: XCTestCase {
         solution = Solution()
     }
 
-    func testCase1(){
+    func testCase1() {
         XCTAssertEqual(solution.isNumeric("100"), true)
         XCTAssertEqual(solution.isNumeric("123.45e+6"), true)
         XCTAssertEqual(solution.isNumeric("+500"), true)

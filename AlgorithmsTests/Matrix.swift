@@ -23,32 +23,32 @@ class existWordInMatrixInPartiallySortedMatrix: XCTestCase {
 	}
 
 	// 查找的数在数组中
-	func testCateInMatrix(){
+	func testCateInMatrix() {
 		XCTAssertTrue(solution.findInPartiallySorted(matrix, num: 7))
 	}
 	
 	// 要查找的数不在数组中
-	func testCateNotInMatrix(){
+	func testCateNotInMatrix() {
 		XCTAssertFalse(solution.findInPartiallySorted(matrix, num: 5))
 	}
 	
 	// 要查找的数是数组中最小的数字
-	func testCateMiniumInMatrix(){
+	func testCateMiniumInMatrix() {
 		XCTAssertTrue(solution.findInPartiallySorted(matrix, num: 1))
 	}
 	
 	// 要查找的数是数组中最大的数字
-	func testCateMaxiumInMatrix(){
+	func testCateMaxiumInMatrix() {
 		XCTAssertTrue(solution.findInPartiallySorted(matrix, num: 15))
 	}
 
 	// 要查找的数比数组中最小的还要小
-	func testCateSmallerThenNumsINMatrix(){
+	func testCateSmallerThenNumsINMatrix() {
 		XCTAssertFalse(solution.findInPartiallySorted(matrix, num: 0))
 	}
 
 	// 要查找的数比数组中最大的还要大
-	func testCateBiggerThenNumsINMatrix(){
+	func testCateBiggerThenNumsINMatrix() {
 		XCTAssertFalse(solution.findInPartiallySorted(matrix, num: 16))
 	}
 }

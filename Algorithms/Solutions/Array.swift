@@ -72,7 +72,7 @@ extension Solution {
 
 extension Solution {
     
-	// 剑指Offer 面试题11：旋转数组的最小数字
+	// 剑指Offer 面试题11：旋转数组的最小数字 https://leetcode-cn.com/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/
 	// 题目：把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。
 	// 输入一个递增排序的数组的一个旋转，输出旋转数组的最小元素。例如数组
 	// {3, 4, 5, 1, 2} 为 {1, 2, 3, 4, 5} 的一个旋转，该数组的最小值为 1。
@@ -161,6 +161,117 @@ extension Solution {
             else { j -= 1 }
         }
         return numbers[i]
+    }
+}
+
+extension Solution {
+//    33. 搜索旋转排序数组 https://leetcode-cn.com/problems/search-in-rotated-sorted-array/
+//    假设按照升序排序的数组在预先未知的某个点上进行了旋转。
+//    ( 例如，数组 [0,1,2,4,5,6,7] 可能变为 [4,5,6,7,0,1,2] )。
+//    搜索一个给定的目标值，如果数组中存在这个目标值，则返回它的索引，否则返回 -1 。
+//    你可以假设数组中不存在重复的元素。
+//    你的算法时间复杂度必须是 O(log n) 级别。
+//    示例 1: 输入: nums = [4,5,6,7,0,1,2], target = 0 输出: 4
+//    示例 2: 输入: nums = [4,5,6,7,0,1,2], target = 3 输出: -1
+
+//    以二分方式确定数组哪边为有序数组(哪边有序很重要），并根据有序部分来判断 target 是否在其中，不断循环；
+//    需要注意边界条件判断
+
+    public func searchInRotatedArray2(_ nums: [Int], _ target: Int) -> Int {
+        if nums.isEmpty { return -1 }
+        if nums.count == 1 { return nums[0] == target ? 0 : -1 }
+
+        var left = 0, right = nums.count - 1
+
+        while left <= right {
+            let mid = (right - left) / 2 + left
+            if nums[mid] == target { return mid }
+
+            if nums[left] <= nums[mid] {
+                if nums[left] <= target && target < nums[mid] {
+                    right = mid - 1
+                } else {
+                    left = mid + 1
+                }
+            } else {
+                if nums[mid] < target && target <= nums[right] {
+                    left = mid + 1
+                } else {
+                    right = mid - 1
+                }
+            }
+        }
+        return -1
+    }
+
+    /// 序列为两个升序，给后面的升序（都小于第一个元素）加一个权值，使序列变为一个升序，然后二分查找
+    /// https://blog.csdn.net/bendaai/article/details/80059676
+
+    public func searchInRotatedArray(_ nums: [Int], _ target: Int) -> Int {
+        if nums.isEmpty { return -1 }
+        if nums.count == 1 { return nums[0] == target ? 0 : -1 }
+
+        var left = 0, right = nums.count - 1
+        while left <= right {
+            let mid = (right - left) / 2 + left
+            if nums[mid] == target { return mid }
+
+            if target.shift(nums[0]) > nums[mid].shift(nums[0]) {
+                left = mid + 1
+            } else {
+                right = mid - 1
+            }
+        }
+        return -1
+    }
+
+
+//    81. 搜索旋转排序数组 II
+//    https://leetcode-cn.com/problems/search-in-rotated-sorted-array-ii/
+//    假设按照升序排序的数组在预先未知的某个点上进行了旋转。
+//    ( 例如，数组 [0,0,1,2,2,5,6] 可能变为 [2,5,6,0,0,1,2] )。
+//    编写一个函数来判断给定的目标值是否存在于数组中。若存在返回 true，否则返回 false。
+//    示例 1: 输入: nums = [2,5,6,0,0,1,2], target = 0
+//    输出: true
+//    示例 2: 输入: nums = [2,5,6,0,0,1,2], target = 3
+//    输出: false
+//    进阶: 这是 搜索旋转排序数组 的延伸题目，本题中的 nums  可能包含重复元素。
+//    这会影响到程序的时间复杂度吗？会有怎样的影响，为什么？
+
+    public func searchInRotatedArrayII(_ nums: [Int], _ target: Int) -> Bool {
+        if nums.isEmpty { return false }
+        if nums.count == 1 { return nums[0] == target }
+
+        var left = 0, right = nums.count - 1
+
+        while left <= right {
+            let mid = (right - left) / 2 + left
+            if nums[mid] == target { return true }
+            /// 此时分不清到底是前面有序还是后面有序，此时 start++ 即可。相当于去掉一个重复的干扰项。
+            if nums[left] == nums[mid] {
+                left += 1; continue;
+            }
+            if nums[left] <= nums[mid] {
+                if nums[left] <= target && target < nums[mid] {
+                    right = mid - 1
+                } else {
+                    left = mid + 1
+                }
+            } else {
+                if nums[mid] < target && target <= nums[right] {
+                    left = mid + 1
+                } else {
+                    right = mid - 1
+                }
+            }
+        }
+        return false
+    }
+}
+
+extension Int {
+    func shift(_ from: Int) -> Int {
+        return self < from ? self + 0x3f3f3f3f - from : self
     }
 }
 

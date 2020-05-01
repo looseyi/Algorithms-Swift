@@ -154,6 +154,63 @@ class ArrayRotatedMinNumber2: XCTestCase {
     }
 }
 
+class ArrayRotatedSpecifyNumber: XCTestCase {
+
+    var solution: Solution!
+
+    override func setUp() {
+        super.setUp()
+        solution = Solution()
+    }
+
+    // 典型输入，单调升序的数组的一个旋转
+    func testCase1() {
+        let nums = [4,5,6,7,0,1,2]
+        XCTAssertEqual(solution.searchInRotatedArray(nums, 0), 4)
+    }
+    // 有重复数字，并且重复的数字刚好的最小的数字
+    func testCase2() {
+        let nums = [4,5,6,7,0,1,2]
+        XCTAssertEqual(solution.searchInRotatedArray(nums, 1), -1)
+    }
+    // 有重复数字，但重复的数字不是第一个数字和最后一个数字
+    func testCase3() {
+        let nums = [3,4,5,1,2,2,2]
+        XCTAssertEqual(solution.searchInRotatedArray(nums, 1), 3)
+    }
+    // 有重复的数字，并且重复的数字刚好是第一个数字和最后一个数字
+    func testCase4() {
+        let nums = [3,4,5,1,2,2,2]
+        XCTAssertEqual(solution.searchInRotatedArray(nums, 2), 5)
+    }
+    // 单调序数组，旋转0个元素，也就是单调升序数组本身
+    func testCase5() {
+        let nums = [3, 1]
+        XCTAssertEqual(solution.searchInRotatedArray(nums, 1), 1)
+    }
+    func testCase6() {
+        let nums = [3, 1, 3]
+        XCTAssertEqual(solution.searchInRotatedArray(nums, 3), -1)
+    }
+    // 数组中只有一个数字
+    func testCase7() {
+        let nums = [2]
+        XCTAssertEqual(solution.searchInRotatedArray(nums, 1), -1)
+    }
+    func testCase8() {
+        let nums = [2,0,1,1,1]
+        XCTAssertEqual(solution.searchInRotatedArray(nums, 0), 0)
+    }
+    func testCase9() {
+        let nums = [1,3,1,1,1]
+        XCTAssertEqual(solution.searchInRotatedArrayII(nums, 3), true)
+    }
+    func testCase10() {
+        let nums = [1, 3]
+        XCTAssertEqual(solution.searchInRotatedArray(nums, 3), 1)
+    }
+}
+
 
 class ArrayReorderOddEven: XCTestCase {
     var solution: Solution!
@@ -162,7 +219,7 @@ class ArrayReorderOddEven: XCTestCase {
         super.setUp()
         solution = Solution()
     }
-    func testCase1(){
+    func testCase1() {
         let result = solution.arrayExchangeSingal([1,2,3,4,5,6,7])
         XCTAssertEqual(result[0], 1)
         XCTAssertEqual(result[1], 7)
@@ -172,7 +229,7 @@ class ArrayReorderOddEven: XCTestCase {
         XCTAssertEqual(result[5], 6)
         XCTAssertEqual(result[6], 2)
     }
-    func testCase2(){
+    func testCase2() {
         let result = solution.arrayExchangeSingal([2,4,6,1,3,5,7])
         XCTAssertEqual(result[0], 7)
         XCTAssertEqual(result[1], 5)
@@ -182,7 +239,7 @@ class ArrayReorderOddEven: XCTestCase {
         XCTAssertEqual(result[5], 4)
         XCTAssertEqual(result[6], 2)
     }
-    func testCase3(){
+    func testCase3() {
         let result = solution.arrayExchangeSingal([1,3,5,7,2,4,6])
         XCTAssertEqual(result[0], 1)
         XCTAssertEqual(result[1], 3)
@@ -192,11 +249,11 @@ class ArrayReorderOddEven: XCTestCase {
         XCTAssertEqual(result[5], 4)
         XCTAssertEqual(result[6], 6)
     }
-    func testCase4(){
+    func testCase4() {
         let result = solution.arrayExchangeSingal([1])
         XCTAssertEqual(result[0], 1)
     }
-    func testCase5(){
+    func testCase5() {
         let result = solution.arrayExchangeSingal([2])
         XCTAssertEqual(result[0], 2)
     }
