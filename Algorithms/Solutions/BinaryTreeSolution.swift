@@ -147,3 +147,37 @@ extension Solution {
 		}
 	}
 }
+
+
+extension Solution {
+//    面试题26：树的子结构
+//    https://leetcode-cn.com/problems/shu-de-zi-jie-gou-lcof/
+//    题目：输入两棵二叉树A和B，判断B是不是A的子结构。
+//    输入两棵二叉树A和B，判断B是不是A的子结构。(约定空树不是任意一个树的子结构)
+//    B是A的子结构， 即 A中有出现和B相同的结构和节点值。
+//    例如: 给定的树 A:
+//              3
+//            / \
+//          4   5
+//        / \
+//      1   2
+//    给定的树 B：
+//          4
+//        /
+//      1
+//    返回 true，因为 B 与 A 的一个子树拥有相同的结构和节点值。
+
+    func recursive(_ A: BinaryTreeNode?, _ B: BinaryTreeNode?) -> Bool {
+        if B == nil { return true }
+        if A == nil || A != B { return false }
+        return recursive(A?.left, B?.left) && recursive(A?.right, B?.right)
+    }
+
+    public func isSubStructure(_ A: BinaryTreeNode?, _ B: BinaryTreeNode?) -> Bool {
+        if let A = A, let B = B {
+            return recursive(A, B) || isSubStructure(A.left, B) || isSubStructure(A.right, B)
+        } else {
+            return false
+        }
+    }
+}

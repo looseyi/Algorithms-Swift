@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class BinaryTreeNode: Equatable {
+public class BinaryTreeNode {
 	
 	public var parent: BinaryTreeNode?
 	public var left: BinaryTreeNode?
@@ -50,8 +50,28 @@ public class BinaryTreeNode: Equatable {
 		result.append(node.val)
 		inOrderCore(node.right, result: &result)
 	}
-	
-	public static func ==(left: BinaryTreeNode, right: BinaryTreeNode) -> Bool {
-		return left.val == right.val
-	}
 }
+
+extension BinaryTreeNode: CustomStringConvertible, CustomDebugStringConvertible {
+    public var description: String {
+        if let left = left, let right = right {
+            return "\(val)\n\(left.description)   \(right.description)"
+        } else if let left = left {
+            return "\(val)\n\(left.description)"
+        } else if let right = right {
+            return "\(val)\n   \(right.description)"
+        } else {
+            return "\(val)"
+        }
+    }
+    public var debugDescription: String {
+        return description
+    }
+}
+
+extension BinaryTreeNode: Equatable {
+    public static func ==(left: BinaryTreeNode, right: BinaryTreeNode) -> Bool {
+        return left.val == right.val
+    }
+}
+
