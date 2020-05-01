@@ -369,5 +369,76 @@ final class LinkListDetectCycle: LinkListTestCase {
 
         XCTAssertEqual(solution.detectCycle(node1)?.val, 9)
     }
-
 }
+
+class LinkListMergeTwoLists: LinkListTestCase {
+
+    //list1: 1->3->5
+    //list2: 2->4->6
+    func testCase1() {
+        cleanNext()
+        node1.next = node3
+        node3.next = node5
+        node2.next = node4
+        node4.next = node6
+
+        let head = solution.mergeTwoLists(node1, node2)
+        XCTAssertEqual(head?.val, 1)
+        XCTAssertEqual(head?.next?.val, 2)
+        XCTAssertEqual(head?.next?.next?.val, 3)
+        XCTAssertEqual(head?.next?.next?.next?.val, 4)
+        XCTAssertEqual(head?.next?.next?.next?.next?.val, 5)
+        XCTAssertEqual(head?.next?.next?.next?.next?.next?.val, 6)
+    }
+    //list1: 1->3->5
+    //list2: 1->3->5
+    func testCase2() {
+        cleanNext()
+        node1.next = node3
+        node3.next = node5
+
+        node2.val = 2
+        node2.val = 4
+        node6.val = 6
+        node2.next = node4
+        node4.next = node6
+
+        let head = solution.mergeTwoLists(node1, node2)
+        XCTAssertEqual(head?.val, 1)
+        XCTAssertEqual(head?.next?.val, 1)
+        XCTAssertEqual(head?.next?.next?.val, 3)
+        XCTAssertEqual(head?.next?.next?.next?.val, 3)
+        XCTAssertEqual(head?.next?.next?.next?.next?.val, 5)
+        XCTAssertEqual(head?.next?.next?.next?.next?.next?.val, 5)
+    }
+
+    //list1: 1
+    //list2: 2
+    func testCase3() {
+        cleanNext()
+
+        let head = solution.mergeTwoLists(node1, node2)
+        XCTAssertEqual(head?.val, 1)
+        XCTAssertEqual(head?.next?.val, 2)
+    }
+    //list1: 1->3->5
+    //list2: nil
+    func testCase4() {
+        cleanNext()
+        node1.next = node3
+        node3.next = node5
+
+        let head = solution.mergeTwoLists(node1, nil)
+        XCTAssertEqual(head?.val, 1)
+        XCTAssertEqual(head?.next?.val, 3)
+        XCTAssertEqual(head?.next?.next?.val, 5)
+    }
+
+    //list1: nil
+    //list2: nil
+    func testCase5() {
+        let head = solution.mergeTwoLists(nil, nil)
+        XCTAssertNil(head)
+    }
+}
+

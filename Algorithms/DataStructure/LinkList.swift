@@ -41,6 +41,12 @@ extension ListNode: Equatable {
     public static func==(lsh: ListNode, rsh: ListNode) -> Bool {
         return lsh.val == rsh.val
     }
+    public static func>=(lsh: ListNode, rsh: ListNode) -> Bool {
+        return lsh.val >= rsh.val
+    }
+    public static func<=(lsh: ListNode, rsh: ListNode) -> Bool {
+        return lsh.val <= rsh.val
+    }
 }
 
 
@@ -241,5 +247,47 @@ extension Solution {
             }
         }
         return nil
+    }
+}
+
+extension Solution {
+//    面试题25：合并两个排序的链表
+      https://leetcode-cn.com/problems/merge-two-sorted-lists/
+//    题目：输入两个递增排序的链表，合并这两个链表并使新链表中的结点仍然是按
+//    照递增排序的。例如
+//    链表1：1->3->5->7
+//    链表2：2->4->6->8
+//    链表3：1->2->3->4->5->6->7->8
+
+//    首先，我们设定一个哨兵节点 prehead ，这可以在最后让我们比较容易地返回合并后的链表。
+//    我们维护一个 prev 指针，我们需要做的是调整它的 next 指针。然后，我们重复以下过程，直到 l1 或者 l2 指向了 null ：
+//    如果 l1 当前节点的值小于等于 l2 ，我们就把 l1 当前的节点接在 prev 节点的后面同时将 l1 指针往后移一位。
+//    否则，我们对 l2 做同样的操作。不管我们将哪一个元素接在了后面，我们都需要把 prev 向后移一位。
+//
+//    在循环终止的时候， l1 和 l2 至多有一个是非空的。
+//    由于输入的两个链表都是有序的，所以不管哪个链表是非空的，它包含的所有元素都比前面已经合并链表中的所有元素都要大。
+//    这意味着我们只需要简单地将非空链表接在合并链表的后面，并返回合并链表即可。
+
+    public func mergeTwoLists(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
+        if l1 == nil { return l2 }
+        if l2 == nil { return l1 }
+
+        let newH = ListNode(val: -1)
+        var prev: ListNode? = newH, l1 = l1, l2 = l2
+
+        while let cur1 = l1, let cur2 = l2 {
+            if cur1 <= cur2 {
+                prev?.next = cur1
+                l1 = l1?.next
+            } else {
+                prev?.next = cur2
+                l2 = l2?.next
+            }
+            prev = prev?.next
+        }
+        // 合并后 l1 和 l2 最多只有一个还未被合并完，我们直接将链表末尾指向未合并完的链表即可
+        prev?.next = l1 == nil ? l2 : l1
+
+        return newH.next
     }
 }
