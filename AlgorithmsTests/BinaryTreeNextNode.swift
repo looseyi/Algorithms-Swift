@@ -9,13 +9,7 @@
 import XCTest
 import Algorithms
 
-class BinaryTreeNextNode: XCTestCase {
-
-	var solution: Solution!
-	override func setUp() {
-		super.setUp()
-		solution = Solution()
-	}
+class BinaryTreeNextNode: BaseTest {
 	
 	//      8
 	//   6    10
@@ -86,13 +80,8 @@ class BinaryTreeNextNode: XCTestCase {
 	}
 }
 
-class BinaryTreeIsSubStructure: XCTestCase {
-    var solution: Solution!
+class BinaryTreeIsSubStructure: BaseTest {
 
-    override func setUp() {
-        super.setUp()
-        solution = Solution()
-    }
     // 树中结点含有分叉，树B是树A的子结构
     //                8          8
     //              /   \       / \
@@ -305,4 +294,139 @@ class BinaryTreeIsSubStructure: XCTestCase {
     func testCase9(){
         XCTAssertFalse(solution.isSubStructure(nil, nil))
     }
+}
+
+
+class BinaryTreeMirror: BaseTest {
+    // 完全二叉树：除了叶子节点，其他节点都有2个子节点
+    //       8
+    //     /   \
+    //    6     10
+    //   / \   / \
+    //  5   7  9  11
+    func testCase1(){
+        let node_1 = BinaryTreeNode(val: 8, parent: nil)
+        let node_2 = BinaryTreeNode(val: 6, parent: node_1)
+        let node_3 = BinaryTreeNode(val: 10, parent: node_1)
+        let node_4 = BinaryTreeNode(val: 5, parent: node_2)
+        let node_5 = BinaryTreeNode(val: 7, parent: node_2)
+        let node_6 = BinaryTreeNode(val: 9, parent: node_3)
+        let node_7 = BinaryTreeNode(val: 11, parent: node_3)
+        node_1.left = node_2
+        node_1.right = node_3
+        node_2.left = node_4
+        node_2.right = node_5
+        node_3.left = node_6
+        node_3.right = node_7
+
+        solution.mirrorTree(node_1)
+        XCTAssertEqual(node_1.val, 8)
+        XCTAssertEqual(node_1.left, node_3)
+        XCTAssertEqual(node_1.right, node_2)
+        XCTAssertEqual(node_3.left, node_7)
+        XCTAssertEqual(node_3.right, node_6)
+        XCTAssertEqual(node_2.left, node_5)
+        XCTAssertEqual(node_2.right, node_4)
+
+        //镜像回去，测试循环的方法
+        solution.mirrorTree(node_1)
+        solution.mirrorTree(node_1)
+        XCTAssertEqual(node_1.val, 8)
+        XCTAssertEqual(node_1.left, node_3)
+        XCTAssertEqual(node_1.right, node_2)
+        XCTAssertEqual(node_3.left, node_7)
+        XCTAssertEqual(node_3.right, node_6)
+        XCTAssertEqual(node_2.left, node_5)
+        XCTAssertEqual(node_2.right, node_4)
+    }
+    // 测试二叉树：出叶子结点之外，左右的结点都有且只有一个左子结点
+    //            8
+    //          7
+    //        6
+    //      5
+    //    4
+    func testCase2(){
+        let node_1 = BinaryTreeNode(val: 8, parent: nil)
+        let node_2 = BinaryTreeNode(val: 7, parent: node_1)
+        let node_3 = BinaryTreeNode(val: 6, parent: node_2)
+        let node_4 = BinaryTreeNode(val: 5, parent: node_3)
+        let node_5 = BinaryTreeNode(val: 4, parent: node_4)
+        node_1.left = node_2
+        node_2.left = node_3
+        node_3.left = node_4
+        node_4.left = node_5
+
+        solution.mirrorTree(node_1)
+        XCTAssertEqual(node_1.val, 8)
+        XCTAssertEqual(node_1.right, node_2)
+        XCTAssertEqual(node_2.right, node_3)
+        XCTAssertEqual(node_3.right, node_4)
+        XCTAssertEqual(node_4.right, node_5)
+
+        //镜像回去
+        solution.mirrorTree(node_1)
+        solution.mirrorTree(node_1)
+        XCTAssertEqual(node_1.val, 8)
+        XCTAssertEqual(node_1.right, node_2)
+        XCTAssertEqual(node_2.right, node_3)
+        XCTAssertEqual(node_3.right, node_4)
+        XCTAssertEqual(node_4.right, node_5)
+
+    }
+    // 测试二叉树：出叶子结点之外，左右的结点都有且只有一个右子结点
+    //            8
+    //             7
+    //              6
+    //               5
+    //                4
+    func testCase3(){
+        let node_1 = BinaryTreeNode(val: 8, parent: nil)
+        let node_2 = BinaryTreeNode(val: 7, parent: node_1)
+        let node_3 = BinaryTreeNode(val: 6, parent: node_2)
+        let node_4 = BinaryTreeNode(val: 5, parent: node_3)
+        let node_5 = BinaryTreeNode(val: 4, parent: node_4)
+        node_1.right = node_2
+        node_2.right = node_3
+        node_3.right = node_4
+        node_4.right = node_5
+
+        solution.mirrorTree(node_1)
+        XCTAssertEqual(node_1.val, 8)
+        XCTAssertEqual(node_1.left, node_2)
+        XCTAssertEqual(node_2.left, node_3)
+        XCTAssertEqual(node_3.left, node_4)
+        XCTAssertEqual(node_4.left, node_5)
+
+        //镜像回去
+        solution.mirrorTree(node_1)
+        solution.mirrorTree(node_1)
+        XCTAssertEqual(node_1.val, 8)
+        XCTAssertEqual(node_1.left, node_2)
+        XCTAssertEqual(node_2.left, node_3)
+        XCTAssertEqual(node_3.left, node_4)
+        XCTAssertEqual(node_4.left, node_5)
+    }
+    // 测试空二叉树：根结点为空指针
+    func testCase4(){
+        let node_1: BinaryTreeNode? = nil
+        solution.mirrorTree(node_1)
+        XCTAssertNil(node_1)
+
+        //镜像回去，循环方法测试
+        solution.mirrorTree(node_1)
+        solution.mirrorTree(node_1)
+        XCTAssertNil(node_1)
+    }
+    // 测试只有一个结点的二叉树
+    func testCase5(){
+        let node_1 = BinaryTreeNode(val: 8, parent: nil)
+        solution.mirrorTree(node_1)
+        XCTAssertEqual(node_1.val, 8)
+
+        //镜像回去
+        solution.mirrorTree(node_1)
+        solution.mirrorTree(node_1)
+        XCTAssertEqual(node_1.val, 8)
+    }
+
 }

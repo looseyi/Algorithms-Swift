@@ -7,17 +7,9 @@
 //
 
 import XCTest
-import Algorithms
 
-class ArrayDuplicationInEditDisable: XCTestCase {
-	
-	var solution: Solution!
-	
-	override func setUp() {
-		super.setUp()
-		solution = Solution()
-	}
-	
+class ArrayDuplicationInEditDisable: BaseTest {
+
 	///数组中存在多个重复的数字
 	func testCase1() {
 		let nums = [2, 3, 5, 4, 3, 2, 6, 7]
@@ -62,14 +54,9 @@ class ArrayDuplicationInEditDisable: XCTestCase {
 }
 
 
-class ArrayDuplicationInEditEnable: XCTestCase {
-	var solution: Solution!
-	
-	override func setUp() {
-		super.setUp()
-		solution = Solution()
-	}
-	///重复数字是数组中最小的数字
+class ArrayDuplicationInEditEnable: BaseTest {
+
+    ///重复数字是数组中最小的数字
 	func testCase1() {
 		let nums = [2, 1, 3, 1, 4]
 		XCTAssertEqual(solution.duplicateEditEnable(nums)!.num, 1)
@@ -97,14 +84,7 @@ class ArrayDuplicationInEditEnable: XCTestCase {
 	}
 }
 
-class ArrayRotatedMinNumber2: XCTestCase {
-
-    var solution: Solution!
-
-    override func setUp() {
-        super.setUp()
-        solution = Solution()
-    }
+class ArrayRotatedMinNumber2: BaseTest {
 
     // 典型输入，单调升序的数组的一个旋转
     func testCase1() {
@@ -154,15 +134,8 @@ class ArrayRotatedMinNumber2: XCTestCase {
     }
 }
 
-class ArrayRotatedSpecifyNumber: XCTestCase {
-
-    var solution: Solution!
-
-    override func setUp() {
-        super.setUp()
-        solution = Solution()
-    }
-
+class ArrayRotatedSpecifyNumber: BaseTest {
+    
     // 典型输入，单调升序的数组的一个旋转
     func testCase1() {
         let nums = [4,5,6,7,0,1,2]
@@ -212,13 +185,8 @@ class ArrayRotatedSpecifyNumber: XCTestCase {
 }
 
 
-class ArrayReorderOddEven: XCTestCase {
-    var solution: Solution!
+class ArrayReorderOddEven: BaseTest {
 
-    override func setUp() {
-        super.setUp()
-        solution = Solution()
-    }
     func testCase1() {
         let result = solution.arrayExchangeSingal([1,2,3,4,5,6,7])
         XCTAssertEqual(result[0], 1)

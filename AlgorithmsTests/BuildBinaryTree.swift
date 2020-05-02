@@ -7,15 +7,9 @@
 //
 
 import XCTest
-import Algorithms
 
-class BuildBinaryTree: XCTestCase {
-	var solution: Solution!
-	
-	override func setUp() {
-		super.setUp()
-		solution = Solution()
-	}
+
+class BuildBinaryTree: BaseTest {
 	
 	// normal binary tree
 	//             1

@@ -7,16 +7,10 @@
 //
 
 import XCTest
-import Algorithms
 
-class FibonacciTest: XCTestCase {
 
-	var solution: Solution!
-	
-	override func setUp() {
-		super.setUp()
-		solution = Solution()
-	}
+class FibonacciTest: BaseTest {
+
 	private func test(_ n: Int, expected: Int) {
 		XCTAssertEqual(solution.fibonacciLoop(n), expected)
 		XCTAssertEqual(solution.fibonacciRecursive(n), expected)

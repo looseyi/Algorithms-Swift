@@ -7,15 +7,9 @@
 //
 
 import XCTest
-import Algorithms
 
-class Cutting: XCTestCase {
-    var solution: Solution!
 
-    override func setUp() {
-        super.setUp()
-        solution = Solution()
-    }
+class Cutting: BaseTest {
     //长度为1
     func testCase1() {
         XCTAssertEqual(solution.cuttingRope_dp(1), 0)

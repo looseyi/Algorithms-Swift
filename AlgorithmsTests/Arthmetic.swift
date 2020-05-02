@@ -7,15 +7,10 @@
 //
 
 import XCTest
-import Algorithms
 
-class ArthmeticPow: XCTestCase {
-    var solution: Solution!
 
-    override func setUp() {
-        super.setUp()
-        solution = Solution()
-    }
+class ArthmeticPow: BaseTest {
+   
     //底数2，指数3，结果8
     func testCase1() {
         XCTAssertEqual(solution.myPow(2.0, 10), 1024.0000)

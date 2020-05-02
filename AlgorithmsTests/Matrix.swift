@@ -7,21 +7,14 @@
 //
 
 import XCTest
-import Algorithms
 
-class existWordInMatrixInPartiallySortedMatrix: XCTestCase {
+class existWordInMatrixInPartiallySortedMatrix: BaseTest {
 
-	var solution: Solution!
 	let matrix = [[1, 2, 8, 9],
 				  [2, 4, 9, 12],
 				  [4, 7, 10, 13],
 				  [6, 8, 11, 15]]
 	
-	override func setUp() {
-		super.setUp()
-		solution = Solution()
-	}
-
 	// 查找的数在数组中
 	func testCateInMatrix() {
 		XCTAssertTrue(solution.findInPartiallySorted(matrix, num: 7))
@@ -54,13 +47,7 @@ class existWordInMatrixInPartiallySortedMatrix: XCTestCase {
 }
 
 
-class FindStringPathInMartrix : XCTestCase {
-    var solution: Solution!
-
-    override func setUp() {
-        super.setUp()
-        solution = Solution()
-    }
+class FindStringPathInMartrix : BaseTest {
     //ABTG
     //CFCS
     //JDEH
@@ -187,13 +174,7 @@ class FindStringPathInMartrix : XCTestCase {
 }
 
 
-class RobotMove: XCTestCase {
-    var solution: Solution!
-
-    override func setUp() {
-        super.setUp()
-        solution = Solution()
-    }
+class RobotMove: BaseTest {
 
     //10行10列 k为5
     func testCase1() {

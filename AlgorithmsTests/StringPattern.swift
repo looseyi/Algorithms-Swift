@@ -7,16 +7,9 @@
 //
 
 import XCTest
-@_exported import Algorithms
 
-final class stringMatchPatternDP: XCTestCase {
+final class stringMatchPatternDP: BaseTest {
 
-    var solution: Solution!
-
-    override func setUp() {
-        super.setUp()
-        solution = Solution()
-    }
     func testCase1() {
         XCTAssertTrue(solution.stringMatchPatternDP("", ""))
         XCTAssertFalse(solution.stringMatchPatternDP("", "."))
@@ -64,13 +57,7 @@ final class stringMatchPatternDP: XCTestCase {
 
 
 
-class NumericStrings: XCTestCase {
-    var solution: Solution!
-
-    override func setUp() {
-        super.setUp()
-        solution = Solution()
-    }
+class NumericStrings: BaseTest {
 
     func testCase1() {
         XCTAssertEqual(solution.isNumeric("100"), true)
@@ -92,5 +79,24 @@ class NumericStrings: XCTestCase {
         XCTAssertEqual(solution.isNumeric(".e1"), false)
         XCTAssertEqual(solution.isNumeric("+."), false)
         XCTAssertEqual(solution.isNumeric(""), false)
+    }
+}
+
+class LengthOfLongestSubstring: BaseTest {
+
+    func testCase1() {
+        XCTAssertEqual(solution.lengthOfLongestSubstring("abcabcbb"), 3)
+    }
+
+    func testCase2() {
+        XCTAssertEqual(solution.lengthOfLongestSubstring("bbbbb"), 1)
+    }
+
+    func testCase3() {
+        XCTAssertEqual(solution.lengthOfLongestSubstring("pwwkew"), 3)
+    }
+
+    func testCase4() {
+        XCTAssertEqual(solution.lengthOfLongestSubstring("dvdf"), 3)
     }
 }

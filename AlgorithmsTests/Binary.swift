@@ -7,16 +7,10 @@
 //
 
 import XCTest
-import Algorithms
 
 
-class BinaryHammingWeight: XCTestCase {
-    var solution: Solution!
 
-    override func setUp() {
-        super.setUp()
-        solution = Solution()
-    }
+class BinaryHammingWeight: BaseTest {
 
     //输入0
     func testCase1() {

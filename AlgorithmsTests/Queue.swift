@@ -9,7 +9,7 @@
 import XCTest
 import Algorithms
 
-class TwoStackQueueTest: XCTestCase {
+class TwoStackQueueTest: BaseTest {
 
 	var queue: TwoStackQueue<Int>!
 	

@@ -9,8 +9,8 @@
 import XCTest
 import Algorithms
 
-class LinkListTestCase: XCTestCase {
-    var solution: Solution!
+class LinkListTestCase: BaseTest {
+
     var node10: ListNode!
     var node9: ListNode!
     var node8: ListNode!

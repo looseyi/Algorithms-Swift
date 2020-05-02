@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		851CFA15245C351300F7B4C5 /* BaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851CFA14245C351300F7B4C5 /* BaseTest.swift */; };
 		852897662448B3A3004EE1E5 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852897652448B3A3004EE1E5 /* Matrix.swift */; };
 		8581280F2441B4AA00C130BD /* Algorithms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 858128052441B4AA00C130BD /* Algorithms.framework */; };
 		858128242441B62400C130BD /* BuildBinaryTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858128232441B62400C130BD /* BuildBinaryTree.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		851CFA14245C351300F7B4C5 /* BaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTest.swift; sourceTree = "<group>"; };
 		852897652448B3A3004EE1E5 /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
 		858128052441B4AA00C130BD /* Algorithms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Algorithms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8581280E2441B4AA00C130BD /* AlgorithmsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlgorithmsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +128,7 @@
 				858128152441B4AB00C130BD /* Info.plist */,
 				85FCD2CA2453E43200E28DFE /* StringPattern.swift */,
 				85FC0B4124508954003D9733 /* Binary.swift */,
+				851CFA14245C351300F7B4C5 /* BaseTest.swift */,
 			);
 			path = AlgorithmsTests;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				8581284C2444308300C130BD /* BinaryTreeNextNode.swift in Sources */,
 				85FC0B4624509521003D9733 /* Arthmetic.swift in Sources */,
 				85FCD2CB2453E43200E28DFE /* StringPattern.swift in Sources */,
+				851CFA15245C351300F7B4C5 /* BaseTest.swift in Sources */,
 				8581290C24449E3600C130BD /* Fibonacci.swift in Sources */,
 				858128432441CE6900C130BD /* Array.swift in Sources */,
 				852897662448B3A3004EE1E5 /* Matrix.swift in Sources */,
