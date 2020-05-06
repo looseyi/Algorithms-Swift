@@ -184,9 +184,34 @@ extension Solution {
 
 extension Solution {
 //    面试题27：二叉树的镜像
+//    https://leetcode-cn.com/problems/er-cha-shu-de-jing-xiang-lcof/
 //    题目：请完成一个函数，输入一个二叉树，该函数输出它的镜像。
+
+    public func mirrorTreeDFS(_ root: BinaryTreeNode?) -> BinaryTreeNode? {
+        guard let root = root else { return nil }
+        let tmp = root.left
+        root.left = mirrorTreeDFS(root.right)
+        root.right = mirrorTreeDFS(tmp)
+        return root
+    }
+
     public func mirrorTree(_ root: BinaryTreeNode?) -> BinaryTreeNode? {
-        return nil
+        guard let root = root else { return nil }
+        var stack = [BinaryTreeNode]()
+        stack.append(root)
+        while !stack.isEmpty {
+            let node = stack.popLast()
+            if let left = node?.left {
+                stack.append(left)
+            }
+            if let right = node?.right {
+                stack.append(right)
+            }
+            let temp = node?.left
+            node?.left = node?.right
+            node?.right = temp
+        }
+        return root
     }
 }
 
