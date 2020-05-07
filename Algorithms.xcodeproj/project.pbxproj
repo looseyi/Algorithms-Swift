@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		851CFA15245C351300F7B4C5 /* BaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851CFA14245C351300F7B4C5 /* BaseTest.swift */; };
 		852897662448B3A3004EE1E5 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852897652448B3A3004EE1E5 /* Matrix.swift */; };
+		8545D6DC246317F500C7801E /* DynamicPrograming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8545D6DB246317F500C7801E /* DynamicPrograming.swift */; };
+		8545D6DE2463184900C7801E /* DynamicPrograming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8545D6DD2463184900C7801E /* DynamicPrograming.swift */; };
 		8581280F2441B4AA00C130BD /* Algorithms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 858128052441B4AA00C130BD /* Algorithms.framework */; };
 		858128242441B62400C130BD /* BuildBinaryTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858128232441B62400C130BD /* BuildBinaryTree.swift */; };
 		8581282E2441C5A800C130BD /* LinkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8581282D2441C5A800C130BD /* LinkList.swift */; };
@@ -47,6 +49,8 @@
 /* Begin PBXFileReference section */
 		851CFA14245C351300F7B4C5 /* BaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTest.swift; sourceTree = "<group>"; };
 		852897652448B3A3004EE1E5 /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
+		8545D6DB246317F500C7801E /* DynamicPrograming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPrograming.swift; sourceTree = "<group>"; };
+		8545D6DD2463184900C7801E /* DynamicPrograming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPrograming.swift; sourceTree = "<group>"; };
 		858128052441B4AA00C130BD /* Algorithms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Algorithms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8581280E2441B4AA00C130BD /* AlgorithmsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlgorithmsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		858128152441B4AB00C130BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -122,6 +126,7 @@
 				8581284B2444308300C130BD /* BinaryTreeNextNode.swift */,
 				8581282D2441C5A800C130BD /* LinkList.swift */,
 				858128422441CE6900C130BD /* Array.swift */,
+				8545D6DD2463184900C7801E /* DynamicPrograming.swift */,
 				8581290724449BC000C130BD /* Queue.swift */,
 				8581290B24449E3600C130BD /* Fibonacci.swift */,
 				85E610F4244E824A00295703 /* Cutting.swift */,
@@ -149,6 +154,7 @@
 			children = (
 				858128322441CDB400C130BD /* Solution.swift */,
 				85FC0B4324508B92003D9733 /* Arithmetic.swift */,
+				8545D6DB246317F500C7801E /* DynamicPrograming.swift */,
 				85E610F2244E81B100295703 /* Cutting.swift */,
 				85FC0B3F245086C0003D9733 /* BinarySolution.swift */,
 				858128452441D3A000C130BD /* MatrixSolution.swift */,
@@ -291,6 +297,7 @@
 				8581283E2441CDB400C130BD /* BinaryTree.swift in Sources */,
 				85FC0B4424508B92003D9733 /* Arithmetic.swift in Sources */,
 				8581283D2441CDB400C130BD /* LinkList.swift in Sources */,
+				8545D6DC246317F500C7801E /* DynamicPrograming.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +317,7 @@
 				85E610F5244E824A00295703 /* Cutting.swift in Sources */,
 				85FC0B4224508954003D9733 /* Binary.swift in Sources */,
 				8581282E2441C5A800C130BD /* LinkList.swift in Sources */,
+				8545D6DE2463184900C7801E /* DynamicPrograming.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
