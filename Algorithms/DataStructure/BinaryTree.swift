@@ -7,14 +7,14 @@
 
 import Foundation
 
-public class BinaryTreeNode {
+public class TreeNode {
 	
-	public var parent: BinaryTreeNode?
-	public var left: BinaryTreeNode?
-	public var right: BinaryTreeNode?
+	public var parent: TreeNode?
+	public var left: TreeNode?
+	public var right: TreeNode?
 	public var val: Int
 
-	public init(val: Int, parent: BinaryTreeNode? = nil, left: BinaryTreeNode? = nil, right: BinaryTreeNode? = nil) {
+	public init(val: Int, parent: TreeNode? = nil, left: TreeNode? = nil, right: TreeNode? = nil) {
 		self.val = val
 		self.left = left
 		self.right = right
@@ -27,7 +27,7 @@ public class BinaryTreeNode {
 		return result
 	}
 
-	private func preOrderCore(_ node: BinaryTreeNode?, result: inout [Int]) {
+	private func preOrderCore(_ node: TreeNode?, result: inout [Int]) {
 		guard let node = node else {
 			return
 		}
@@ -42,7 +42,7 @@ public class BinaryTreeNode {
 		return result
 	}
 
-	private func inOrderCore(_ node: BinaryTreeNode?, result: inout [Int]) {
+	private func inOrderCore(_ node: TreeNode?, result: inout [Int]) {
 		guard let node = node else {
 			return
 		}
@@ -52,7 +52,7 @@ public class BinaryTreeNode {
 	}
 }
 
-extension BinaryTreeNode: CustomStringConvertible, CustomDebugStringConvertible {
+extension TreeNode: CustomStringConvertible, CustomDebugStringConvertible {
     public var description: String {
         if let left = left, let right = right {
             return "\(val)\n\(left.description)   \(right.description)"
@@ -69,8 +69,8 @@ extension BinaryTreeNode: CustomStringConvertible, CustomDebugStringConvertible 
     }
 }
 
-extension BinaryTreeNode: Equatable {
-    public static func ==(left: BinaryTreeNode, right: BinaryTreeNode) -> Bool {
+extension TreeNode: Equatable {
+    public static func ==(left: TreeNode, right: TreeNode) -> Bool {
         return left.val == right.val
     }
 }
