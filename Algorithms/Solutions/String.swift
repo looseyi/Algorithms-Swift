@@ -312,3 +312,73 @@ extension Solution {
     }
 }
 
+
+extension Solution {
+
+//    [最长上升序列](https://leetcode-cn.com/problems/longest-increasing-subsequence)
+//    给定一个无序的整数数组，找到其中最长上升子序列的长度。
+//    示例:
+//
+//    输入: [10,9,2,5,3,7,101,18]
+//    输出: 4
+//    解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。
+//    说明:
+//
+//    可能会有多种最长上升子序列的组合，你只需要输出对应的长度即可。
+//    你算法的时间复杂度应该为 O(n2) 。
+//    进阶: 你能将算法的时间复杂度降低到 O(n log n) 吗?
+
+    public func lengthOfLIS1(_ nums: [Int]) -> Int {
+//        var res = 0
+        var dp = Array(repeating: 1, count: nums.count)
+
+        for i in 0..<nums.count {
+            for j in 0..<i {
+                if nums[i] > nums[j] {
+                    dp[i] = max(dp[i], dp[j] + 1);
+                }
+            }
+        }
+
+//        for i in 0..<dp.count {
+//            res = max(res, dp[i])
+//        }
+        return dp.max() ?? 0
+    }
+
+    public func lengthOfLIS(_ nums: [Int]) -> Int {
+
+        var top = Array(repeating: 1, count: nums.count)
+
+        // 牌堆数初始化为 0
+        var piles = 0
+        for i in 0..<nums.count {
+            // 要处理的扑克牌
+            let poker = nums[i]
+
+            /***** 搜索左侧边界的二分查找 *****/
+            var left = 0, right = piles
+            while (left < right) {
+                let mid = (left + right) / 2;
+                if (top[mid] > poker) {
+                    right = mid
+                } else if (top[mid] < poker) {
+                    left = mid + 1
+                } else {
+                    right = mid
+                }
+            }
+            /*********************************/
+
+            // 没找到合适的牌堆，新建一堆
+            if (left == piles) {
+                piles += 1
+            }
+            // 把这张牌放到牌堆顶
+            top[left] = poker
+        }
+        // 牌堆数就是 LIS 长度
+        return piles
+    }
+}
+

@@ -140,8 +140,24 @@ class MinDistanceString: BaseTest {
     func testCase4() {
         XCTAssertEqual(solution.minDistance("", ""), 0)
     }
+}
+
+class LengthOfLIS: BaseTest {
+
+    func testCase1() {
+        XCTAssertEqual(solution.lengthOfLIS([10,9,2,5,3,7,101,18]), 4)
+    }
+
+//    func testCase2() {
+//        XCTAssertEqual(solution.lengthOfLIS("intention", "execution"), 5)
+//    }
 //
-//    func testCase5() {
-//        XCTAssertEqual(solution.longestPalindrome("babad"), "cc")
+//    func testCase3() {
+//        XCTAssertEqual(solution.lengthOfLIS("dinitrophenylhydrazine", "benzalphenylhydrazone"), 7)
+//    }
+//
+//    func testCase4() {
+//        XCTAssertEqual(solution.lengthOfLIS("", ""), 0)
 //    }
 }
+
