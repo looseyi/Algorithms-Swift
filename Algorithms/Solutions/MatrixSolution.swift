@@ -10,55 +10,55 @@ import Foundation
 
 extension Solution {
 
-// 剑指Offer面试题4：二维数组中的查找
-// 题目：在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按
-// 照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个
-// 整数，判断数组中是否含有该整数。
+//    剑指Offer面试题4：二维数组中的查找
+//    题目：在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按
+//    照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个
+//    整数，判断数组中是否含有该整数。
+//
+//    题眼：由于二维数组，如果从中间选取一个数字来比较，那下一次要查找的会是两个重叠的区域。
+//    通过从右上角来查找，保证是只有一个区域，注意数组为空的情况。
 
-// 题眼：由于二维数组，如果从中间选取一个数字来比较，那下一次要查找的会是两个重叠的区域。
-// 通过从右上角来查找，保证是只有一个区域，注意数组为空的情况。
-	
-	/**
-	判断二维数组中是否含有该整数P
-	从二维数组的右上角开始查找
-	- Parameters:
-	- matrix: 二维数组
-	- num: 查找的整数
-	- Returns: 是否包含
-	*/
-	public func findInPartiallySorted(_ matrix: [[Int]], num: Int) -> Bool {
-		// y 表示二维数组的列数， x 表示二维数组的行数 索引均从 0 开始
-		// 查找方法从二维数组的右上角开始比较
-		var y = 0
-		var x = matrix.count - 1
-		while y <= matrix[0].count - 1 && x >= 0 {
-			if matrix[y][x] > num {
-				x -= 1
-			} else if matrix[y][x] < num {
-				y += 1
-			} else {
-				return true
-			}
-		}
-		return false
-	}
+    /**
+     判断二维数组中是否含有该整数P
+     从二维数组的右上角开始查找
+     - Parameters:
+     - matrix: 二维数组
+     - num: 查找的整数
+     - Returns: 是否包含
+     */
+    public func findInPartiallySorted(_ matrix: [[Int]], num: Int) -> Bool {
+        // y 表示二维数组的列数， x 表示二维数组的行数 索引均从 0 开始
+        // 查找方法从二维数组的右上角开始比较
+        var y = 0
+        var x = matrix.count - 1
+        while y <= matrix[0].count - 1 && x >= 0 {
+            if matrix[y][x] > num {
+                x -= 1
+            } else if matrix[y][x] < num {
+                y += 1
+            } else {
+                return true
+            }
+        }
+        return false
+    }
 }
 
 extension Solution {
 
-// 面试题12(剑指Offer)：矩阵中的路径
-// 题目：请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有
-// 字符的路径。路径可以从矩阵中任意一格开始，每一步可以在矩阵中向左、右、77
-// 上、下移动一格。如果一条路径经过了矩阵的某一格，那么该路径不能再次进入
-// 该格子。例如在下面的3×4的矩阵中包含一条字符串“bfce”的路径（路径中的字
-// 母用下划线标出）。但矩阵中不包含字符串“abfb”的路径，因为字符串的第一个
-// 字符b占据了矩阵中的第一行第二个格子之后，路径不能再次进入这个格子。
-// A B T G
-// C F C S
-// J D E H
-
-
-//  1. 典型的矩阵搜索问题，可使用 深度优先搜索（DFS）+ 剪枝 解决。
+//    面试题12(剑指Offer)：矩阵中的路径
+//    题目：请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有
+//    字符的路径。路径可以从矩阵中任意一格开始，每一步可以在矩阵中向左、右、77
+//    上、下移动一格。如果一条路径经过了矩阵的某一格，那么该路径不能再次进入
+//    该格子。例如在下面的3×4的矩阵中包含一条字符串“bfce”的路径（路径中的字
+//    母用下划线标出）。但矩阵中不包含字符串“abfb”的路径，因为字符串的第一个
+//    字符b占据了矩阵中的第一行第二个格子之后，路径不能再次进入这个格子。
+//    A B T G
+//    C F C S
+//    J D E H
+//
+//
+//    1. 典型的矩阵搜索问题，可使用 深度优先搜索（DFS）+ 剪枝 解决。
 //    算法原理：
 //    深度优先搜索： 可以理解为暴力法遍历矩阵中所有字符串可能性。DFS 通过递归，先朝一个方向搜到底，再回溯至上个节点，沿另一个方向搜索，以此类推。
 //    剪枝： 在搜索中，遇到 这条路不可能和目标字符串匹配成功 的情况（例如：此矩阵元素和目标字符不同、此元素已被访问），则应立即返回，称之为 可行性剪枝 。
@@ -73,8 +73,8 @@ extension Solution {
 //    搜索下一单元格： 朝当前元素的 上、下、左、右 四个方向开启下层递归，使用 或 连接 （代表只需一条可行路径） ，并记录结果至 res 。
 //    还原当前矩阵元素： 将 tmp 暂存值还原至 board[i][j] 元素。
 //    回溯返回值： 返回 res ，代表是否搜索到目标字符串。
-
-
+//
+//
 //    2. 主程序寻找起点，辅助函数用于在给定起点和已探测节点的基础上继续DFS探测，同时用一个字典保留已探测的节点避免重复探测。当探测节点个数等于目标字符串长度时，即可返回；否则回溯至上一节点。
 
     public func existWordInMatrix(_ board: [[Character]], _ word: String) -> Bool {
@@ -107,9 +107,9 @@ extension Solution {
         offset += 1
         visited[row][col] = true
         let valid = dfs(board, row + 1, col, word, &offset, &visited) ||
-        dfs(board, row - 1, col, word, &offset, &visited) ||
-        dfs(board, row, col + 1, word, &offset, &visited) ||
-        dfs(board, row , col - 1, word, &offset, &visited)
+            dfs(board, row - 1, col, word, &offset, &visited) ||
+            dfs(board, row, col + 1, word, &offset, &visited) ||
+            dfs(board, row , col - 1, word, &offset, &visited)
 
         if !valid {
             offset -= 1
@@ -129,13 +129,13 @@ extension Solution {
 //    也不能进入行坐标和列坐标的数位之和大于k的格子。例如，当k为18时，机器人能够进入方格 [35, 37] ，
 //    因为3+5+3+7=18。但它不能进入方格 [35, 38]，因为3+5+3+8=19。
 //    请问该机器人能够到达多少个格子？
-
-// 题眼：
-// 1. 由于是 BFS，为了防止重入，需要有一个数组来记录访问过的格子，visited
-// 2. 隐藏优化：搜索的过程中搜索方向可以缩减为向右和向下，而不必再向上和向左进行搜索。
-// 3. 递推工作：
-//     标记当前单元格 ：将索引 (i, j) 存入 visited 中，代表此单元格已被访问过。
-//     搜索下一单元格： 计算当前元素的 下、右 两个方向元素的数位和，并开启下层递归 。
+//
+//    题眼：
+//    1. 由于是 BFS，为了防止重入，需要有一个数组来记录访问过的格子，visited
+//    2. 隐藏优化：搜索的过程中搜索方向可以缩减为向右和向下，而不必再向上和向左进行搜索。
+//    3. 递推工作：
+//    标记当前单元格 ：将索引 (i, j) 存入 visited 中，代表此单元格已被访问过。
+//    搜索下一单元格： 计算当前元素的 下、右 两个方向元素的数位和，并开启下层递归 。
     static var m: Int!
     static var n: Int!
     static var k: Int!
@@ -167,3 +167,74 @@ extension Solution {
         return i
     }
 }
+
+extension Solution {
+//    面试题29. 顺时针打印矩阵
+//    https://leetcode-cn.com/problems/shun-shi-zhen-da-yin-ju-zhen-lcof/
+//
+//    输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字。
+//    输入：matrix = [[1,2,3],[4,5,6],[7,8,9]]
+//    输出：[1,2,3,6,9,8,7,4,5]
+    public func spiralOrder(_ matrix: [[Int]]) -> [Int] {
+
+        guard matrix.count > 0 && matrix[0].count > 0 else {
+            return [Int]()
+        }
+        var start = 0
+        var result = [Int]()
+        while matrix.count > start * 2 && matrix[start].count > start * 2 {
+            result.append(contentsOf: PrintMatrixInCircle(matrix, start: start))
+            start += 1
+        }
+        return result
+    }
+
+    private func PrintMatrixInCircle(_ numbers:[[Int]], start: Int) -> [Int] {
+        let endX = numbers[start].count - 1 - start
+        let endY = numbers.count - 1 - start
+        var result = [Int]()
+        //从左到右打印一行
+        for i in stride(from: start, through: endX, by: 1) {
+            result.append(numbers[start][i])
+        }
+        //从上到下打印一列
+        if start < endY {
+            for i in stride(from: start + 1, through: endY, by: 1) {
+                result.append(numbers[i][endX])
+            }
+        }
+        //从右到左打印一行
+        if start < endX && start < endY {
+            for i in stride(from: endX - 1, through: start, by: -1) {
+                result.append(numbers[endY][i])
+            }
+        }
+        //从下到上打印一列
+        if start < endX && start < endY - 1 {
+            for i in stride(from: endY - 1, through: start + 1, by: -1) {
+                result.append(numbers[i][start])
+            }
+        }
+        return result
+    }
+}
+
+extension Solution {
+    //    221. 最大正方形
+    //    https://leetcode-cn.com/problems/maximal-square/
+    //    在一个由 0 和 1 组成的二维矩阵内，找到只包含 1 的最大正方形，并返回其面积。
+    //
+    //    示例: 输入:
+    //    1 0 1 0 0
+    //    1 0 1 1 1
+    //    1 1 1 1 1
+    //    1 0 0 1 0
+    //    输出: 4
+
+    func maximalSquare(_ matrix: [[Character]]) -> Int {
+        return 0
+    }
+
+}
+
+

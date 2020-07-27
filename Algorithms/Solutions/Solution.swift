@@ -16,15 +16,15 @@ public class Solution {
 
 extension String {
 
-    func index(offset: Int) -> String.Index {
+    func index(_ offset: Int) -> String.Index {
         return index(startIndex, offsetBy: offset)
     }
 
     func char(offset: Int) -> Character {
-        return self[index(startIndex, offsetBy: offset)]
+        return self[index(offset)]
     }
 
     func substring(from offset: Int) -> String {
-        return String(suffix(from: index(startIndex, offsetBy: offset)))
+        return String(suffix(from: index(offset)))
     }
 }

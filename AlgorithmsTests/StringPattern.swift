@@ -100,3 +100,25 @@ class LengthOfLongestSubstring: BaseTest {
         XCTAssertEqual(solution.lengthOfLongestSubstring("dvdf"), 3)
     }
 }
+
+class LongestPalindrome: BaseTest {
+    func testCase1() {
+        XCTAssertEqual(solution.longestPalindrome("babad"), "aba")
+    }
+
+    func testCase2() {
+        XCTAssertEqual(solution.longestPalindrome("a"), "a")
+    }
+
+    func testCase3() {
+        XCTAssertEqual(solution.longestPalindrome("cbbd"), "bb")
+    }
+
+    func testCase4() {
+        XCTAssertEqual(solution.longestPalindrome("babad"), "bab")
+    }
+
+    func testCase5() {
+        XCTAssertEqual(solution.longestPalindrome("babad"), "cc")
+    }
+}
