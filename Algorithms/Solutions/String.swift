@@ -200,3 +200,115 @@ extension Solution {
     }
 }
 
+
+extension Solution {
+
+    /// 编辑距离
+//    给你两个单词 word1 和 word2，请你计算出将 word1 转换成 word2 所使用的最少操作数 。
+//
+//    你可以对一个单词进行如下三种操作：
+//
+//    插入一个字符
+//    删除一个字符
+//    替换一个字符
+//
+//
+//    示例 1：
+//
+//    输入：word1 = "horse", word2 = "ros"
+//    输出：3
+//    解释：
+//    horse -> rorse (将 'h' 替换为 'r')
+//    rorse -> rose (删除 'r')
+//    rose -> ros (删除 'e')
+//    示例 2：
+//
+//    输入：word1 = "intention", word2 = "execution"
+//    输出：5
+//    解释：
+//    intention -> inention (删除 't')
+//    inention -> enention (将 'i' 替换为 'e')
+//    enention -> exention (将 'n' 替换为 'x')
+//    exention -> exection (将 'n' 替换为 'c')
+//    exection -> execution (插入 'u')
+
+    public func minDistance1(_ word1: String, _ word2: String) -> Int {
+
+        var arr1 = Array(word1), arr2 = Array(word2)
+        /// memory init with [[-1]]
+        var memory = Array(repeating: Array(repeating: -1, count: word2.count), count: word1.count)
+
+        func min3(_ a: Int, _ b: Int, _ c: Int) -> Int {
+            return min(a, min(b, c))
+        }
+
+        func dp(_ i: Int, _ j: Int) -> Int {
+            // base case
+            if i == -1 {
+                return j + 1
+            }
+            if j == -1 {
+                return i + 1
+            }
+
+            if memory[i][j] != -1 {
+                return memory[i][j]
+            }
+
+            if arr1[i] == arr2[j] {
+                memory[i][j] = dp(i - 1, j - 1)
+            } else {
+                memory[i][j] = min3(dp(i, j - 1) + 1,
+                                    dp(i - 1, j) + 1,
+                                    dp(i - 1, j - 1) + 1)
+            }
+            return memory[i][j]
+        }
+
+        return dp(word1.count - 1, word2.count - 1)
+    }
+
+    /// dp table, bottom to top
+    public func minDistance(_ word1: String, _ word2: String) -> Int {
+
+        if word1.isEmpty {
+            return word2.count
+        }
+
+        if word2.isEmpty {
+            return word1.count
+        }
+
+        func min3(_ a: Int, _ b: Int, _ c: Int) -> Int {
+            return min(a, min(b, c))
+        }
+
+        let arr1 = Array(word1), arr2 = Array(word2)
+
+        /// memory init with [[-1]]
+        var dp = Array(repeating: Array(repeating: 0, count: word2.count + 1), count: word1.count + 1)
+
+        for i in 1...word1.count {
+            dp[i][0] = i
+        }
+
+        for j in 1...word2.count {
+            dp[0][j] = j
+        }
+
+        for i in 1...word1.count {
+            for j in 1...word2.count {
+                if arr1[i - 1] == arr2[j - 1] {
+                    dp[i][j] = dp[i - 1][j - 1]
+                } else {
+                    dp[i][j] = min3(dp[i][j - 1] + 1,
+                                    dp[i - 1][j] + 1,
+                                    dp[i - 1][j - 1] + 1)
+                }
+            }
+        }
+
+        return dp[word1.count][word2.count]
+    }
+}
+

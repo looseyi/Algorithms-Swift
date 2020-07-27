@@ -122,3 +122,26 @@ class LongestPalindrome: BaseTest {
         XCTAssertEqual(solution.longestPalindrome("babad"), "cc")
     }
 }
+
+
+class MinDistanceString: BaseTest {
+    func testCase1() {
+        XCTAssertEqual(solution.minDistance("horse", "ros"), 3)
+    }
+
+    func testCase2() {
+        XCTAssertEqual(solution.minDistance("intention", "execution"), 5)
+    }
+
+    func testCase3() {
+        XCTAssertEqual(solution.minDistance("dinitrophenylhydrazine", "benzalphenylhydrazone"), 7)
+    }
+
+    func testCase4() {
+        XCTAssertEqual(solution.minDistance("", ""), 0)
+    }
+//
+//    func testCase5() {
+//        XCTAssertEqual(solution.longestPalindrome("babad"), "cc")
+//    }
+}
