@@ -672,5 +672,39 @@ class BinaryTreeisSymmetric: BaseTest {
     func testCase8(){
         XCTAssertTrue(solution.isSymmetric(nil))
     }
+}
 
+
+class BinaryTreeMaxPathSum: BaseTest {
+
+    //       1
+    //     /   \
+    //    2     3
+
+    func testCase1(){
+        let node1 = TreeNode(val: 1)
+        let node2 = TreeNode(val: 2, parent: node1)
+        let node3 = TreeNode(val: 3, parent: node1)
+        node1.left = node2
+        node1.right = node3
+        XCTAssertTrue(solution.maxPathSum(node1) == 6)
+    }
+//    输入: [-10,9,20,null,null,15,7], 输出: 42
+//    //          -10
+//    //          / \
+//    //        9  20
+//    //            /  \
+//    //          15   7
+    func testCase2(){
+        let node1 = TreeNode(val: -10)
+        let node2 = TreeNode(val: 9, parent: node1)
+        let node3 = TreeNode(val: 20, parent: node1)
+        let node4 = TreeNode(val: 15, parent: node3)
+        let node5 = TreeNode(val: 7, parent: node3)
+        node1.left = node2
+        node1.right = node3
+        node3.left = node4
+        node3.right = node5
+        XCTAssertTrue(solution.maxPathSum(node1) == 42)
+    }
 }

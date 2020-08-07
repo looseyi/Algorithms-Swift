@@ -47,3 +47,20 @@ extension Solution {
         return totalCosts[last]
     }
 }
+
+//extension Solution {
+////    打印一个list 如 [3 100 4 6 0 -1 4 3] 打印一个字典，key为当前值，value为第一个大于当前值的值
+//
+//    public func maxDictionaryInArray(_ array: [Int]) -> [Int : Int] {
+//        if array.isEmpty {
+//            return [:]
+//        }
+//        var dp = Array(repeating: -1, count: array.count)
+//        var i = 0
+//        while i < array.count {
+//            if dp[i] < dp[i + 1]
+//            dp[i]
+//            i += 1
+//        }
+//    }
+//}

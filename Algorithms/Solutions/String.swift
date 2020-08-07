@@ -382,3 +382,82 @@ extension Solution {
     }
 }
 
+extension Solution {
+//    剑指 Offer 38. [字符串的排列](https://leetcode-cn.com/problems/zi-fu-chuan-de-pai-lie-lcof/)
+//    输入一个字符串，打印出该字符串中字符的所有排列。
+//    你可以以任意顺序返回这个字符串数组，但里面不能有重复元素。
+//    示例: 输入：s = "abc" 输出：["abc","acb","bac","bca","cab","cba"]
+//    限制：1 <= s 的长度 <= 8
+
+    public func permutation(_ s: String) -> [String] {
+        var results = [String]()
+        var chars = Array(s)
+        var tracks = Set<Character>()
+
+        func backtrack(_ index: Int) {
+
+            if s.count - 1 == index {
+                // 添加排列方案
+                results.append(String(chars))
+                return
+            }
+
+            tracks.removeAll()
+            var i = index
+            while i < s.count {
+                // 重复，因此剪枝
+                if tracks.contains(chars[i]) {
+                    i += 1
+                    continue
+                }
+                tracks.update(with:chars[i])
+                // 交换，将 c[i] 固定在第 x 位
+                swapString(i, index)
+                // 开启固定第 x + 1 位字符
+                backtrack(index + 1)
+                swapString(index, i)
+                i += 1
+            }
+        }
+        /// 利用 swap 节省空间
+        func swapString(_ a: Int, _ b: Int) {
+            let tmp = chars[a]
+            chars[a] = chars[b]
+            chars[b] = tmp
+        }
+
+        backtrack(0)
+        return results
+    }
+
+    func permutation1(_ s: String) -> [String] {
+        var results = [String]()
+        let chars = Array(s)
+
+        func backtrack(_ chars: [Character], _ tracks: [Int]) {
+
+            var tracks = tracks
+            if tracks.count == chars.count {
+                let result = String(tracks.map { chars[$0] })
+                if !results.contains(result) {
+                    results.append(result)
+                }
+                return
+            }
+
+            for (i, _) in chars.enumerated() {
+                if tracks.contains(i) {
+                    continue
+                }
+                tracks.append(i)
+                backtrack(chars, tracks)
+                tracks.removeLast()
+            }
+        }
+
+        let tracks = [Int]()
+        backtrack(chars, tracks)
+        return results
+    }
+
+}

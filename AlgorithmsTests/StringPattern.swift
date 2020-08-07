@@ -161,3 +161,22 @@ class LengthOfLIS: BaseTest {
 //    }
 }
 
+class PermutationString: BaseTest {
+
+    func testCase1() {
+        XCTAssertEqual(solution.permutation("aab"), ["aab", "aba"])
+    }
+
+    func testCase2() {
+        XCTAssertEqual(solution.permutation("tfkadbt"), ["aba","aab","baa"])
+    }
+
+    func testCase3() {
+        XCTAssertEqual(solution.permutation("vpvptjzh"), ["aba","aab","baa"])
+    }
+
+    func testCase4() {
+        XCTAssertEqual(solution.permutation("abc"), ["aba","aab","baa"])
+    }
+}
+

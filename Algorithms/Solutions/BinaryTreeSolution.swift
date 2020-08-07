@@ -299,3 +299,47 @@ extension Solution {
         return true
     }
 }
+
+extension Solution {
+//    124. [二叉树中的最大路径和](https://leetcode-cn.com/problems/binary-tree-maximum-path-sum)
+//    给定一个非空二叉树，返回其最大路径和。
+//    本题中，路径被定义为一条从树中任意节点出发，达到任意节点的序列。该路径至少包含一个节点，且不一定经过根节点。
+//
+//    示例 1: 输入: [1,2,3], 输出: 6
+//      1
+//     / \
+//    2   3
+//
+//    示例 2:
+//    输入: [-10,9,20,null,null,15,7], 输出: 42
+//          -10
+//          / \
+//        9  20
+//            /  \
+//          15   7
+
+    public func maxPathSum(_ root: TreeNode?) -> Int {
+        var ans = Int.min
+
+        func maxGain(_ root: TreeNode?) -> Int {
+            guard let root = root else { return 0 }
+
+            // 递归计算左右子节点的最大贡献值
+            // 只有在最大贡献值大于 0 时，才会选取对应子节点
+            let leftGain = max(0, maxGain(root.left))
+            let rightGain = max(0, maxGain(root.right))
+
+            // 节点的最大路径和取决于该节点的值与该节点的左右子节点的最大贡献值
+            let priceNewpath = leftGain + rightGain + root.val
+
+            // 更新答案
+            ans = max(ans, priceNewpath);
+
+            // 返回节点的最大贡献值
+            return root.val + max(leftGain, rightGain);
+        }
+
+        _ = maxGain(root)
+        return ans
+    }
+}
