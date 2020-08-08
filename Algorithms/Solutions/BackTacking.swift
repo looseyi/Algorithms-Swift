@@ -55,12 +55,6 @@ extension Solution {
         }
     }
 
-    func swap(_ list: inout [Int], _ i: Int, _ j: Int) {
-        let tmp = list[i]
-        list[i] = list[j]
-        list[j] = tmp
-    }
-
     private func dfs2(_ nums: [Int], _ position: Int, _ results: inout [[Int]]) {
         // 退出条件
         if nums.count - 1 == position {
@@ -72,6 +66,54 @@ extension Solution {
         for i in position..<nums.count {
             swap(&nums, i, position)
             dfs2(nums, position + 1, &results)
+            swap(&nums, position, i)
+        }
+    }
+}
+
+
+extension Solution {
+
+    //    [全排列](https://leetcode-cn.com/problems/permutations)：
+    //    给定一个 没有重复 数字的序列，返回其所有可能的全排列。
+    //    示例: 输入: [1,2,3]
+    //    输出:
+    //    [
+    //    [1,2,3],
+    //    [1,3,2],
+    //    [2,1,3],
+    //    [2,3,1],
+    //    [3,1,2],
+    //    [3,2,1]
+    //    ]
+
+    public func permuteUnique(_ nums: [Int]) -> [[Int]] {
+        var results = [[Int]]()
+
+        // 排序（升序或者降序都可以），排序是剪枝的前提
+        let nums = nums.sorted()
+        dfs1(nums, 0, &results)
+        return results
+    }
+
+    private func dfs1(_ nums: [Int], _ position: Int, _ results: inout [[Int]]) {
+        // 退出条件
+        if nums.count - 1 == position {
+            results.append(nums)
+            return
+        }
+
+        var nums = nums
+        var set = Set<Int>()
+
+        for i in position..<nums.count {
+            if set.contains(nums[i]) {
+                continue
+            }
+            set.insert(nums[i])
+
+            swap(&nums, i, position)
+            dfs1(nums, position + 1, &results)
             swap(&nums, position, i)
         }
     }

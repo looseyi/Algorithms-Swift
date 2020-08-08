@@ -22,4 +22,21 @@ class BackTrackingPermutation: BaseTest {
             [3,2,1]
             ])
     }
+
+    func testCaseUnit1() {
+        XCTAssertEqual(solution.permuteUnique([1,1,2]), [
+            [1,1,2],
+            [1,2,1],
+            [2,1,1]
+        ])
+    }
+
+    func testCaseUnit2() {
+        XCTAssertEqual(solution.permuteUnique([1,1,0,0,1,-1,-1,1]), [
+            [1,1,2],
+            [1,2,1],
+            [2,1,1]
+        ])
+    }
+
 }

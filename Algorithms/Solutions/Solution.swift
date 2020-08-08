@@ -28,3 +28,10 @@ extension String {
         return String(suffix(from: index(offset)))
     }
 }
+
+// 利用 swap 节省空间
+func swap<T>(_ list: inout [T], _ i: Int, _ j: Int) {
+    let tmp = list[i]
+    list[i] = list[j]
+    list[j] = tmp
+}

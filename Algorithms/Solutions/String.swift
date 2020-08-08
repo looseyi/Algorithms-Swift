@@ -412,18 +412,12 @@ extension Solution {
                 }
                 tracks.update(with:chars[i])
                 // 交换，将 c[i] 固定在第 x 位
-                swapString(i, index)
+                swap(&chars, i, index)
                 // 开启固定第 x + 1 位字符
                 backtrack(index + 1)
-                swapString(index, i)
+                swap(&chars, index, i)
                 i += 1
             }
-        }
-        /// 利用 swap 节省空间
-        func swapString(_ a: Int, _ b: Int) {
-            let tmp = chars[a]
-            chars[a] = chars[b]
-            chars[b] = tmp
         }
 
         backtrack(0)
