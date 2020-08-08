@@ -95,3 +95,20 @@ class BuildBinaryTree: BaseTest {
 		XCTAssertFalse(result?.inOrder() == inorder)
 	}
 }
+
+class BinarSearchTree: BaseTest {
+
+    func testIsValidBST1() {
+        let preorder = [1,2,3]
+        let inorder = [2,1,3]
+        let result = solution.buildTree(preorder, inorder)
+        XCTAssertTrue(solution.isValidBST(result))
+    }
+
+    func testIsValidBST2() {
+        let preorder = [5,1,4,3,6]
+        let inorder = [1,5,3,4,6]
+        let result = solution.buildTree(preorder, inorder)
+        XCTAssertFalse(solution.isValidBST(result))
+    }
+}

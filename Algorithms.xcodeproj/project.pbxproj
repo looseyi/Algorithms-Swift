@@ -11,6 +11,7 @@
 		852897662448B3A3004EE1E5 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852897652448B3A3004EE1E5 /* Matrix.swift */; };
 		853FA95F24DE9E4900FB503F /* BackTacking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853FA95E24DE9E4900FB503F /* BackTacking.swift */; };
 		853FA96124DE9F1200FB503F /* BackTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853FA96024DE9F1200FB503F /* BackTracking.swift */; };
+		853FA96324DED88A00FB503F /* BinarySearchTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853FA96224DED88A00FB503F /* BinarySearchTree.swift */; };
 		8545D6DC246317F500C7801E /* DynamicPrograming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8545D6DB246317F500C7801E /* DynamicPrograming.swift */; };
 		8545D6DE2463184900C7801E /* DynamicPrograming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8545D6DD2463184900C7801E /* DynamicPrograming.swift */; };
 		8581280F2441B4AA00C130BD /* Algorithms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 858128052441B4AA00C130BD /* Algorithms.framework */; };
@@ -54,6 +55,7 @@
 		852897652448B3A3004EE1E5 /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
 		853FA95E24DE9E4900FB503F /* BackTacking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackTacking.swift; sourceTree = "<group>"; };
 		853FA96024DE9F1200FB503F /* BackTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackTracking.swift; sourceTree = "<group>"; };
+		853FA96224DED88A00FB503F /* BinarySearchTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinarySearchTree.swift; sourceTree = "<group>"; };
 		8545D6DB246317F500C7801E /* DynamicPrograming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPrograming.swift; sourceTree = "<group>"; };
 		8545D6DD2463184900C7801E /* DynamicPrograming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPrograming.swift; sourceTree = "<group>"; };
 		858128052441B4AA00C130BD /* Algorithms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Algorithms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,6 +169,7 @@
 				85FC0B3F245086C0003D9733 /* BinarySolution.swift */,
 				858128452441D3A000C130BD /* MatrixSolution.swift */,
 				858128332441CDB400C130BD /* BinaryTreeSolution.swift */,
+				853FA96224DED88A00FB503F /* BinarySearchTree.swift */,
 				8581290924449CDC00C130BD /* Fibonacci.swift */,
 				859D0F052446090800C460DC /* Array.swift */,
 				85FCD2C82453DB4900E28DFE /* String.swift */,
@@ -314,6 +317,7 @@
 				85812906244497E700C130BD /* Queue.swift in Sources */,
 				85E610F3244E81B100295703 /* Cutting.swift in Sources */,
 				8581283E2441CDB400C130BD /* BinaryTree.swift in Sources */,
+				853FA96324DED88A00FB503F /* BinarySearchTree.swift in Sources */,
 				85FC0B4424508B92003D9733 /* Arithmetic.swift in Sources */,
 				8581283D2441CDB400C130BD /* LinkList.swift in Sources */,
 				8545D6DC246317F500C7801E /* DynamicPrograming.swift in Sources */,
@@ -528,6 +532,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4NZYB3MAER;
 				INFOPLIST_FILE = AlgorithmsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -546,6 +551,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4NZYB3MAER;
 				INFOPLIST_FILE = AlgorithmsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
