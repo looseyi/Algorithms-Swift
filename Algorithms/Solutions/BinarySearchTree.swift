@@ -78,8 +78,131 @@ extension Solution {
             return root
         } else if root.val < val {
             return searchBST(root.right, val)
-        } else {
+        } else if root.val > val {
             return searchBST(root.left, val)
         }
+        return nil
+    }
+}
+
+extension Solution {
+
+//    [BST插入](https://leetcode-cn.com/problems/insert-into-a-binary-search-tree)
+//    给定二叉搜索树（BST）的根节点和要插入树中的值，将值插入二叉搜索树。 返回插入后二叉搜索树的根节点。 保证原始二叉搜索树中不存在新值。
+//
+//    注意，可能存在多种有效的插入方式，只要树在插入后仍保持为二叉搜索树即可。 你可以返回任意有效的结果。例如,
+//    给定二叉搜索树:
+//
+//            4
+//           / \
+//          2   7
+//         / \
+//        1   3
+//
+//    和 插入的值: 5
+//    你可以返回这个二叉搜索树:
+//
+//            4
+//          /   \
+//         2     7
+//        / \   /
+//       1   3 5
+//    或者这个树也是有效的:
+//
+//            5
+//          /   \
+//         2     7
+//        / \
+//       1   3
+//            \
+//             4
+
+    func insertIntoBST(_ root: TreeNode?, _ val: Int) -> TreeNode? {
+        guard let root = root else { return TreeNode(val: val) }
+
+//        if root.val == val {
+//            return root
+        if root.val < val {
+            root.right = insertIntoBST(root.right, val)
+        } else if root.val > val {
+            root.left = insertIntoBST(root.left, val)
+        }
+        return root
+    }
+}
+
+
+extension Solution {
+
+//    [BST 删除节点](https://leetcode-cn.com/problems/delete-node-in-a-bst)
+//    给定一个二叉搜索树的根节点 root 和一个值 key，删除二叉搜索树中的 key 对应的节点，并保证二叉搜索树的性质不变。返回二叉搜索树（有可能被更新）的根节点的引用。
+//
+//    一般来说，删除节点可分为两个步骤：
+//
+//    首先找到需要删除的节点；
+//    如果找到了，删除它。
+//    说明： 要求算法时间复杂度为 O(h)，h 为树的高度。
+//
+//    示例:
+//
+//    root = [5,3,6,2,4,null,7]
+//    key = 3
+//
+//       5
+//      / \
+//     3   6
+//    / \   \
+//    2   4   7
+//
+//    给定需要删除的节点值是 3，所以我们首先找到 3 这个节点，然后删除它。
+//
+//    一个正确的答案是 [5,4,6,2,null,null,7], 如下图所示。
+//
+//       5
+//      / \
+//     4   6
+//    /     \
+//    2      7
+//
+//    另一个正确答案是 [5,2,6,null,4,null,7]。
+//
+//     5
+//    / \
+//    2   6
+//     \   \
+//      4   7
+
+    func deleteNode(_ root: TreeNode?, _ key: Int) -> TreeNode? {
+        guard let root = root else { return nil }
+
+        func getMin(_ node: TreeNode?) -> TreeNode? {
+            // BST 最左边的就是最小的
+            var node = node
+            while let left = node?.left {
+                node = left
+            }
+            return node
+        }
+
+        if root.val == key {
+            // A 只有一个非空子节点，那么它要让这个孩子接替自己的位置。
+            if root.left == nil {
+                return root.right
+            }
+            if root.right == nil {
+                return root.left
+            }
+
+            // 处理情况 3 在右子树找到最小节点
+            if let minNode = getMin(root.right) {
+                root.val = minNode.val
+                root.right = deleteNode(root.right, minNode.val)
+            }
+        } else if root.val < key {
+            root.right = deleteNode(root.right, key)
+        } else if root.val > key {
+            root.left = deleteNode(root.left, key)
+        }
+        return root
     }
 }
