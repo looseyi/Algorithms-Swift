@@ -112,3 +112,22 @@ class BinarSearchTree: BaseTest {
         XCTAssertFalse(solution.isValidBST(result))
     }
 }
+
+class BinarSearchTreeRecover: BaseTest {
+
+    func testRecoverBST1() {
+        let preorder = [1,3,2]
+        let inorder = [3,2,1]
+        let result = solution.buildTree(preorder, inorder)
+        solution.recoverBST(result)
+        XCTAssertEqual(result!.description, "1\n2\n3")
+    }
+
+    func testRecoverBST2() {
+        let preorder = [2,1,4,3]
+        let inorder = [1,2,4,3]
+        let result = solution.buildTree(preorder, inorder)
+        solution.recoverBST1(result)
+        XCTAssertEqual(result!.description, "2\n1\n4\n3")
+    }
+}

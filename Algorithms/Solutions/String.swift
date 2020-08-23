@@ -147,7 +147,7 @@ extension Solution {
 
     /// 这题还可以用滑动窗口来解决（正解）
 
-    public func lengthOfLongestSubstring(_ s: String) -> Int {
+    public func lengthOfLongestSubstring1(_ s: String) -> Int {
         var result = [Character](), length = 0
         let arr = Array(s)
         for s in arr {
@@ -161,6 +161,31 @@ extension Solution {
             length = max(length, result.count)
         }
         return length
+    }
+
+    public func lengthOfLongestSubstring(_ s: String) -> Int {
+//        var left = 0, right = 0, length = 0
+//        var window = [Character : Int]()
+//        let chars = Array(s)
+//        for char  in chars {
+//            if let count = window[char] {
+//                window[char] = count + 1
+//            }
+//            right += 1
+//
+//            // 如果 window 中出现重复字符
+//            // 开始移动 left 缩小窗口
+//            while let count = window[char], count > 1 {
+//                let key = chars[left];
+//                if count = chars[key]
+//                window[key] = count
+//                left += 1
+//            }
+//
+//            length = max(length, right - left)
+//        }
+//        return length
+        return 0
     }
 }
 

@@ -9,6 +9,8 @@
 import Foundation
 
 public class Solution {
+
+    var pred: TreeNode?, x: TreeNode!, y: TreeNode!
 	
 	public init() {}
 

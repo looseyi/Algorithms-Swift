@@ -206,3 +206,107 @@ extension Solution {
         return root
     }
 }
+
+extension Solution {
+//    https://leetcode-cn.com/problems/recover-binary-search-tree/
+//    二叉搜索树中的两个节点被错误地交换。
+//    请在不改变其结构的情况下，恢复这棵树。
+//    示例 1: 输入: [1,3,null,null,2]
+//
+//          1
+//        /
+//      3
+//        \
+//          2
+//
+//    输出: [3,1,null,null,2]
+//
+//          3
+//        /
+//      1
+//        \
+//          2
+
+    public func recoverBST1(_ root: TreeNode?) {
+        sequenceTraversal(root)
+        swap(x, y)
+    }
+
+    public func recoverBST(_ root: TreeNode?) {
+        sequenceTraversal(root)
+        swap(x, y)
+    }
+
+    func sequenceTraversal(_ root: TreeNode?) {
+
+        guard let root = root else { return }
+
+        sequenceTraversal(root.left)
+        find(root)
+        sequenceTraversal(root.right)
+    }
+
+    func inorderTraversal(_ root: TreeNode?) {
+        var stack = [TreeNode?]()
+        var node: TreeNode? = root
+
+        while !stack.isEmpty || node != nil {
+            while let cur = node {
+                stack.append(cur)
+                node = cur.left
+            }
+            if let cur = stack.removeLast() {
+                // 中序操作
+                find(cur)
+
+                node = cur.right
+            }
+        }
+    }
+
+    //! 莫里斯中序遍历
+    func morris(_ root: TreeNode?) {
+        var node: TreeNode? = root
+
+        while var node: TreeNode = node {
+            if let left = node.left {
+                //! 找到前驱节点
+                var pred = left
+                while let right = pred.right, !(right === node) {
+                    pred = right
+                }
+
+                //!
+                if pred.right == nil {
+                    pred.right = node
+                    node = left
+                } else {
+                    find(node)
+                    pred.right = nil
+                    node = node.right!
+                }
+
+            } else {
+                find(node)
+                node = node.right!
+            }
+        }
+    }
+
+    //! 找逆序对
+    func find(_ node: TreeNode) {
+        if let pred = pred, node.val < pred.val {
+            if x == nil {
+                x = pred
+            }
+            y = node
+        }
+        pred = node
+    }
+
+    fileprivate func swap(_ x: TreeNode, _ y: TreeNode) {
+        let tmp = x.val
+        x.val = y.val
+        y.val = tmp
+    }
+}

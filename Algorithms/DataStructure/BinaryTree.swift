@@ -50,16 +50,38 @@ public class TreeNode {
 		result.append(node.val)
 		inOrderCore(node.right, result: &result)
 	}
+
+    func inorderTraversal(_ root: TreeNode?) -> [Int] {
+        guard let root = root else { return [] }
+        var result: [Int] = []
+
+        var stack = [TreeNode?]()
+        var node: TreeNode? = root
+
+        while !stack.isEmpty || node != nil {
+            while let cur = node {
+                stack.append(cur)
+                node = cur.left
+            }
+            if let cur = stack.removeLast() {
+                // 中序操作
+                result.append(cur.val)
+
+                node = cur.right
+            }
+        }
+        return result
+    }
 }
 
 extension TreeNode: CustomStringConvertible, CustomDebugStringConvertible {
     public var description: String {
         if let left = left, let right = right {
-            return "\(val)\n\(left.description)   \(right.description)"
+            return "\(val)\n\(left.description) \(right.description)"
         } else if let left = left {
             return "\(val)\n\(left.description)"
         } else if let right = right {
-            return "\(val)\n   \(right.description)"
+            return "\(val)\n\(right.description)"
         } else {
             return "\(val)"
         }

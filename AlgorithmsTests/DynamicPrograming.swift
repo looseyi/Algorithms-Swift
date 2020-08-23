@@ -22,3 +22,12 @@ class MincostTickets: BaseTest {
         XCTAssertEqual(result, 11)
     }
 }
+
+
+class CoinChangeTest: BaseTest {
+    func testCase1() {
+        let coins = [1,2,5]
+        let result = solution.coinChange(coins, 11)
+        XCTAssertEqual(result, 3)
+    }
+}

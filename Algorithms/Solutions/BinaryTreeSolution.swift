@@ -13,6 +13,7 @@ extension Solution {
 
     /**
      根据前序序列和中序序列构建二叉树
+      https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
      - Parameters:
      - preorder: 前序序列数组
      - inorder: 中序序列数组
@@ -20,6 +21,28 @@ extension Solution {
      **/
 
     public func buildTree(_ preorder: [Int], _ inorder: [Int]) -> TreeNode? {
+        var inOrderMap = [Int : Int]()
+        for (i, v) in inorder.enumerated() {
+            inOrderMap[v] = i
+        }
+        func buildTreeCore(_ prevStart: Int, _ prevEnd: Int,
+                           _ inStart: Int, _ inEnd: Int) -> TreeNode? {
+            if prevStart > prevEnd || inStart > inEnd { return nil }
+
+            let root = TreeNode(val: preorder[prevStart])
+            let inRootIndex = inOrderMap[root.val]!
+            let numberLeft = inRootIndex - inStart
+            root.left = buildTreeCore(prevStart + 1, prevStart + numberLeft,
+                                      inStart, inRootIndex - 1)
+            root.right = buildTreeCore(prevStart + numberLeft + 1, prevEnd,
+                                       inRootIndex + 1, inEnd)
+            return root
+        }
+        return buildTreeCore(0, preorder.count - 1, 0, inorder.count - 1)
+    }
+
+
+    public func buildTree1(_ preorder: [Int], _ inorder: [Int]) -> TreeNode? {
         if preorder.count == 0 || inorder.count == 0 || preorder.count != inorder.count {
             return nil
         }

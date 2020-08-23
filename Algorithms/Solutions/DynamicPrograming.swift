@@ -48,6 +48,46 @@ extension Solution {
     }
 }
 
+extension Solution {
+//    链接：https://leetcode-cn.com/problems/coin-change
+//    给定不同面额的硬币 coins 和一个总金额 amount。编写一个函数来计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回 -1。
+//    示例 1:
+//    输入: coins = [1, 2, 5], amount = 11
+//    输出: 3
+//    解释: 11 = 5 + 5 + 1
+//    示例 2:
+//    输入: coins = [2], amount = 3
+//    输出: -1
+//    本质上就是 N 叉树的遍历
+    public func coinChange(_ coins: [Int], _ amount: Int) -> Int {
+        var mem = [Int : Int]()
+
+        func dp(_ n: Int) -> Int {
+            if let val = mem[n - 1] {
+                return val
+            }
+            if n == 0 { return 0 }
+            if n < 0 { return -1 }
+
+            var result = Int.max
+            for coin in coins {
+                let subProblems = dp(n - coin)
+                if subProblems == -1 {
+                    continue
+                }
+                result = min(result, 1 + subProblems)
+            }
+            mem[n - 1] = result != Int.max ? result : -1
+            return mem[n - 1]!
+        }
+
+        let result = dp(amount)
+        return result
+    }
+}
+
+
+
 //extension Solution {
 ////    打印一个list 如 [3 100 4 6 0 -1 4 3] 打印一个字典，key为当前值，value为第一个大于当前值的值
 //
