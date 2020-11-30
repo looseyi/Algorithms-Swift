@@ -103,6 +103,24 @@ extension Solution {
         }
         return pre
     }
+
+    public func reverseList1(_ head: ListNode?) -> ListNode? {
+
+        var pre: ListNode?
+        var cur = head
+        var next = head
+
+        while cur != nil {
+
+            next = cur?.next
+            // 反转节点
+            cur?.next = pre
+            // 更新指针位置
+            pre = cur
+            cur = next
+        }
+        return pre
+    }
 }
 
 
@@ -172,6 +190,30 @@ extension Solution {
             }
             cur = postN
         }
+        return head
+    }
+
+    /// 83. 删除排序链表中的重复元素
+    /// https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/
+
+    // 如何高效对有序数组/链表去重？ https://zhuanlan.zhihu.com/p/107791000
+
+    func deleteDuplicates(_ head: ListNode?) -> ListNode? {
+
+        var slow = head
+        var fast = head?.next
+
+        while let node = fast {
+            if node != slow {
+                slow?.next = node
+
+                slow = slow?.next
+            }
+
+            fast = node.next
+        }
+
+        slow?.next = nil
         return head
     }
 }

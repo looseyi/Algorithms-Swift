@@ -30,6 +30,7 @@
 		8581290A24449CDC00C130BD /* Fibonacci.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8581290924449CDC00C130BD /* Fibonacci.swift */; };
 		8581290C24449E3600C130BD /* Fibonacci.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8581290B24449E3600C130BD /* Fibonacci.swift */; };
 		859D0F062446090800C460DC /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859D0F052446090800C460DC /* Array.swift */; };
+		85A414B2251D9916003A0D80 /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A414B1251D9916003A0D80 /* Test.m */; };
 		85E610F3244E81B100295703 /* Cutting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E610F2244E81B100295703 /* Cutting.swift */; };
 		85E610F5244E824A00295703 /* Cutting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E610F4244E824A00295703 /* Cutting.swift */; };
 		85E723FF247FE71400419B9F /* SortTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E723FE247FE71400419B9F /* SortTemplate.swift */; };
@@ -79,6 +80,8 @@
 		8581290924449CDC00C130BD /* Fibonacci.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fibonacci.swift; sourceTree = "<group>"; };
 		8581290B24449E3600C130BD /* Fibonacci.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fibonacci.swift; sourceTree = "<group>"; };
 		859D0F052446090800C460DC /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		85A414B0251D9916003A0D80 /* AlgorithmsTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AlgorithmsTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		85A414B1251D9916003A0D80 /* Test.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
 		85E610F2244E81B100295703 /* Cutting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cutting.swift; sourceTree = "<group>"; };
 		85E610F4244E824A00295703 /* Cutting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cutting.swift; sourceTree = "<group>"; };
 		85E723FE247FE71400419B9F /* SortTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortTemplate.swift; sourceTree = "<group>"; };
@@ -146,6 +149,8 @@
 				85FC0B4124508954003D9733 /* Binary.swift */,
 				851CFA14245C351300F7B4C5 /* BaseTest.swift */,
 				853FA96024DE9F1200FB503F /* BackTracking.swift */,
+				85A414B1251D9916003A0D80 /* Test.m */,
+				85A414B0251D9916003A0D80 /* AlgorithmsTests-Bridging-Header.h */,
 			);
 			path = AlgorithmsTests;
 			sourceTree = "<group>";
@@ -264,6 +269,7 @@
 					};
 					8581280D2441B4AA00C130BD = {
 						CreatedOnToolsVersion = 11.4;
+						LastSwiftMigration = 1200;
 					};
 				};
 			};
@@ -332,6 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8581290824449BC000C130BD /* Queue.swift in Sources */,
+				85A414B2251D9916003A0D80 /* Test.m in Sources */,
 				8581284C2444308300C130BD /* BinaryTreeNextNode.swift in Sources */,
 				85FC0B4624509521003D9733 /* Arthmetic.swift in Sources */,
 				85FCD2CB2453E43200E28DFE /* StringPattern.swift in Sources */,
@@ -535,6 +542,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4NZYB3MAER;
 				INFOPLIST_FILE = AlgorithmsTests/Info.plist;
@@ -545,6 +553,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Algorithms.AlgorithmsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AlgorithmsTests/AlgorithmsTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -554,6 +564,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4NZYB3MAER;
 				INFOPLIST_FILE = AlgorithmsTests/Info.plist;
@@ -564,6 +575,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Algorithms.AlgorithmsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AlgorithmsTests/AlgorithmsTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
