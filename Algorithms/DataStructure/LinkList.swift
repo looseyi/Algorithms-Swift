@@ -121,6 +121,17 @@ extension Solution {
         }
         return pre
     }
+
+    /// 通过递归来实现链表反转 
+    func reverse(_ head: ListNode?) -> ListNode? {
+        guard let next = head?.next else { return nil }
+
+        let last = reverse(next)
+
+        next.next = head
+        head?.next = nil
+        return last
+    }
 }
 
 
