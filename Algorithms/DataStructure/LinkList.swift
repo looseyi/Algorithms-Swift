@@ -122,7 +122,7 @@ extension Solution {
         return pre
     }
 
-    /// 通过递归来实现链表反转 
+    /// 通过递归来实现链表反转
     func reverse(_ head: ListNode?) -> ListNode? {
         guard let next = head?.next else { return nil }
 
@@ -130,6 +130,41 @@ extension Solution {
 
         next.next = head
         head?.next = nil
+        return last
+    }
+
+//    92. 反转链表 II  链接：https://leetcode-cn.com/problems/reverse-linked-list-ii
+//    反转从位置 m 到 n 的链表。请使用一趟扫描完成反转。
+//
+//    说明:
+//    1 ≤ m ≤ n ≤ 链表长度。
+//
+//    示例:
+//
+//    输入: 1->2->3->4->5->NULL, m = 2, n = 4
+//    输出: 1->4->3->2->5->NULL
+
+
+    static var successor: ListNode?
+
+    func reverseBetween(_ head: ListNode?, _ m: Int, _ n: Int) -> ListNode? {
+        if m == 1 {
+            return reverseN(head, n)
+        }
+        head?.next = reverseBetween(head?.next, m - 1, n - 1)
+        return head
+    }
+
+
+    func reverseN(_ head: ListNode?, _ n: Int) -> ListNode? {
+        if n == 1 {
+            Solution.successor = head?.next
+            return head
+        }
+
+        let last = reverseN(head?.next, n - 1)
+        head?.next?.next = head
+        head?.next = Solution.successor
         return last
     }
 }
@@ -342,5 +377,60 @@ extension Solution {
         prev?.next = l1 == nil ? l2 : l1
 
         return newH.next
+    }
+}
+
+extension Solution {
+//    链接：https://leetcode-cn.com/problems/add-two-numbers-ii
+//    给你两个 非空 链表来代表两个非负整数。数字最高位位于链表开始位置。它们的每个节点只存储一位数字。将这两数相加会返回一个新的链表。
+//    你可以假设除了数字 0 之外，这两个数字都不会以零开头。
+//    进阶：
+//    如果输入链表不能修改该如何处理？换句话说，你不能对列表中的节点进行翻转。
+//
+//    示例：
+//    输入：(7 -> 2 -> 4 -> 3) + (5 -> 6 -> 4)
+//    输出：7 -> 8 -> 0 -> 7
+
+
+    func addTwoNumbers(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
+        var s1: [ListNode] = []
+        var s2: [ListNode] = []
+
+        var head1 = l1, head2 = l2
+
+        while head1 != nil {
+            s1.append(head1!)
+            head1 = head1?.next
+        }
+
+        while head2 != nil {
+            s2.append(head2!)
+            head2 = head2?.next
+        }
+
+        var carry = 0
+        var pos: ListNode?
+
+        while !s1.isEmpty || !s2.isEmpty || carry != 0 {
+
+            let node1: ListNode? = s1.isEmpty ? nil : s1.removeLast()
+            let node2: ListNode? = s2.isEmpty ? nil : s2.removeLast()
+
+            if let node1 = node1, let node2 = node2 {
+                carry += node1.val + node2.val
+            } else if let node1 = node1, node2 == nil {
+                carry += node1.val
+            } else if let node2 = node2, node1 == nil {
+                carry += node2.val
+            }
+
+            let newH = ListNode(val: carry % 10)
+            newH.next = pos
+            pos = newH
+            carry = carry > 9 ? 1 : 0
+        }
+
+        return pos
+
     }
 }
