@@ -91,15 +91,15 @@ extension Solution {
 //    都迭代完了(cur 变成 null 了)，pre 就是最后一个节点了。
 
     public func reverseList(_ head: ListNode?) -> ListNode? {
-        var pre: ListNode? = nil, cur = head, tmp: ListNode? = nil
+        var pre: ListNode? = nil, cur = head, next: ListNode? = nil
         while let c = cur {
             //记录当前节点的下一个节点
-            tmp = c.next
+            next = c.next
             //然后将当前节点指向pre
             c.next = pre
             //pre和cur节点都前进一位
             pre = c
-            cur = tmp
+            cur = next 
         }
         return pre
     }
@@ -123,7 +123,7 @@ extension Solution {
     }
 
     /// 通过递归来实现链表反转
-    func reverse(_ head: ListNode?) -> ListNode? {
+    func reverse1(_ head: ListNode?) -> ListNode? {
         guard let next = head?.next else { return nil }
 
         let last = reverse(next)
@@ -433,4 +433,77 @@ extension Solution {
         return pos
 
     }
+}
+
+extension Solution {
+
+//    234. 回文链表 请判断一个链表是否为回文链表。
+//    链接：https://leetcode-cn.com/problems/palindrome-linked-list
+//    示例 1:
+//    输入: 1->2
+//    输出: false
+//    示例 2:
+//    输入: 1->2->2->1
+//    输出: true
+//    进阶：你能否用 O(n) 时间复杂度和 O(1) 空间复杂度解决此题？
+
+    static var left: ListNode?
+
+    func traverse(_ right: ListNode?) -> Bool {
+        if right == nil { return true }
+
+        var result = traverse(right?.next)
+        result = result && Solution.left?.val == right?.val
+
+        Solution.left = Solution.left?.next
+
+        return result
+    }
+
+    func isPalindrome1(_ head: ListNode?) -> Bool {
+        Solution.left = head
+        return traverse(head)
+    }
+
+    func isPalindrome(_ head: ListNode?) -> Bool {
+
+        var slow = head, fast = head
+        while fast != nil, fast?.next != nil {
+            fast = fast?.next?.next
+            slow = slow?.next
+        }
+        if fast != nil {
+            slow = slow?.next
+        }
+
+
+        var left = head
+        var right = reverse(slow)
+        while right != nil {
+            if left?.val != right?.val {
+                return false
+            }
+            left = left?.next
+            right = right?.next
+        }
+        return true
+    }
+
+
+    func reverse(_ head: ListNode?) -> ListNode? {
+        var prev: ListNode?
+        var cur = head, next = head
+
+        while cur != nil {
+            next = cur?.next
+
+            cur?.next = prev
+
+            prev = cur
+            cur = next
+
+        }
+        return prev
+    }
+
 }

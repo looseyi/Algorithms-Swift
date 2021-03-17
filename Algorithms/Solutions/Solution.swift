@@ -29,6 +29,10 @@ extension String {
     func substring(from offset: Int) -> String {
         return String(suffix(from: index(offset)))
     }
+
+    func substring(from offset: Int, to end: Int) -> String {
+        return String(self[index(offset)...index(end)])
+    }
 }
 
 // 利用 swap 节省空间

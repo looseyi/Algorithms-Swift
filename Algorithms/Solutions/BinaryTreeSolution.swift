@@ -389,3 +389,27 @@ extension Solution {
         return left != nil ? left : right
     }
 }
+
+extension Solution {
+  func isSymmetric(node: TreeNode?) -> Bool {
+    if node == nil {
+      return false
+    }
+    return isSymmetricSum(node.left, nodel.right)
+  }
+
+  func isSymmetricSum(left: TreeNode?, right: TreeNode?) -> Bool {
+      if left == nil && right == nil {
+          return true
+      }
+      if left == nil || right == nil {
+          return false
+      }
+      if left != right {
+          return false
+      } else {
+          return isSymmetricSum(left?.left, right?.left) &&
+          isSymmetricSum(left?.right, right?.right) &&
+      }
+  }
+}
